@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Art, Photo
+from django.views.generic.edit import CreateView
 from django.http import HttpResponse
 import uuid  # for generating random strings (what we name our photos)
 import boto3  # sdk to interact with aws bucket
@@ -8,14 +9,17 @@ import boto3  # sdk to interact with aws bucket
 S3_BASE_URL = 'https://s3-us-east-2.amazonaws.com/'
 BUCKET = 'start-photo-bucket'
 
+class ArtCreate(CreateView):
+    model = Art
+    fields = '__all__'
+    # fields = ['name', 'artist', 'description', 'yearCreated']
+    success_url='/art'
 
 def home(request):
-    return HttpResponse('<h1>hey</h1>')
-
+    return render(request, 'home.html')
 
 def about(request):
     return render(request, 'about.html')
-
 
 def art_index(request):
     art = Art.objects.all()
