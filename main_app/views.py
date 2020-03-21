@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, DeleteView
 
 from .models import Art, Photo
 
@@ -24,6 +24,11 @@ class ArtCreate(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+
+class ArtDelete(DeleteView):
+    model = Art
+    success_url = '/art/'
 
 
 def home(request):
