@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
+import datetime
 
 # Create your models here.
 
@@ -21,3 +22,13 @@ class Art(models.Model):
 class Photo(models.Model):
     url = models.CharField(max_length=200)
     art = models.ForeignKey(Art, on_delete=models.CASCADE)
+
+
+class Comment(models.Model):
+    date = models.DateField(default=datetime.datetime.now)
+    content = models.TextField(max_length=200)
+    art = models.ForeignKey(Art, on_delete=models.CASCADE)
+
+    # change the default sort
+    class Meta:
+        ordering = ['-date']
