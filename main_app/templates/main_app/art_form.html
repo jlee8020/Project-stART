@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+ <section class="section container" id="add_art">
+   <div class="row">
+      <div class="col s12 l5">
+        <h4 class="blue-text text-darken-2">Add an Art</h4>
+        <p>"I am enough of an artist to draw freely upon my imagination." <br> Albert Einstein</p>
+      </div>
+      <div class="input-field col s12">
+          <form action=""  method="POST">
+          {% csrf_token %}
+            <div class="input-field col s12">
+              <input type="text" id='art-name'>
+              <label for="art_name">Art Name</label>
+            </div>
+            <div class="input-field col s12">
+              <input type="text" id='artist-name'>
+              <label for="artist_name">Artist Name</label>
+            </div>
+            <div class="input-field col s12">
+                <textarea id="textarea1" class="materialize-textarea"></textarea>
+                <label for="art-description">Describe the Art</label>
+            </div>
+            <div class="input-field col s12">
+              <input type="text" id='year-taken'>
+              <label for="year_taken">Year Photo Taken</label>
+            </div>
+            <!-- <div class="input-field col s12">
+              <input type="text" id="date" class="datepicker">
+              <label for="date">Choose the Date Taken</label>
+            </div> -->
+            <div class="input field">
+              <a href="#" type="submit" class="btn pink waves-effect waves-light">
+                <span>Add ART</span>
+                <i class="material-icons left">add_circle</i>
+              </a>
+              </div>
+            </div>
+      </form>
+    </div>  
+ </section>
+  
+{% endblock %}
