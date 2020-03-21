@@ -1,4 +1,5 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+{% block content %}
 
 <h1>Art Details</h1>
 
@@ -7,7 +8,9 @@
     <span class="card-title">{{ oneArt.name }}</span>
     <p>Art: {{ oneArt.artist }}</p>
     <p>Description: {{ oneArt.description }}</p>
-    <p>Date Taken: {{ oneArt.dateTaken }}</p>
+    <div class="card-action">
+      <a href="{% url 'art_delete' oneArt.id %}">Delete</a>
+    </div>
   </div>
 </div>
 
