@@ -1,82 +1,21 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-   <!-- Compiled and minified CSS -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"> -->
-    <title>stART Base</title>
-   <style>
-     header{
-       background: url(/static/main_app/images/bheader2.png);
-       background-size: cover;
-       background-position: center;
-       min-height: 400px;
-     }
-     @media screen and (max-width: 470px){
-       header{
-         min-height:300px;
-         min-width: 500px;
-       }
-     }
-   </style>
-  </head>
-  <body>
-    <header>
-      
-    </header>
-    <!-- <div class="navbar-fixed"> -->
-        <nav class="nav-wrapper yellow accent-1">
-            <div class="container">
-              <img class="brand-logo" src="/static/main_app/images/logo.PNG" alt="logo" height="60">
-              <!-- mobile menu -->
-             <a href="#" class="sidenav-trigger" data-target="mobile-links">
-               <i class="material-icons">menu</i>
-             </a>
-               <ul class="right hide-on-med-and-down">
-                 <li><a class="blue-text text-darken-2" href="{% url 'home' %}">Home</a></li>
-                 <li><a class="blue-text text-darken-2" href="{% url 'about' %}">About</a></li>
-                 <li><a class="blue-text text-darken-2" href="{% url 'art_create' %}">Add an Art</a></li>
-                 <li><a class="blue-text text-darken-2" href="{% url 'art_index' %}">View All Arts</a></li>
-               </ul>
-             </div>
-           </nav>
-         <!-- </div> -->
-         <ul class="sidenav" id="mobile-links">
-           <li><a class="blue-text text-darken-2" href="{% url 'home' %}">Home</a></li>
-           <li><a class="blue-text text-darken-2" href="{% url 'about' %}">About</a></li>
-           <li><a class="blue-text text-darken-2" href="{% url 'art_create' %}">Add an Art</a></li>
-           <li><a class="blue-text text-darken-2" href="{% url 'art_index' %}">View All Arts</a></li>
-         </ul>
-        <!-- photo / grid -->
-        <section class="container section" id="about-photo1">
-            <div class="row">
-                <div class="col s12 l4">
-                    <img src="/static/main_app/images/pacman.png" alt="about Start" class="responsive-img">
-                </div>
-                <div class="col s12 l6">
-                    <h3 class="blue-text text-darken-4">OUR MISSION</h3>
-                     <p>To provide an online hub for all to post, search, and showcase our very own street arts in Austin, such as murals and graffitis, because we believe in keeping Austin colorful and fun!
-                    </p>
-                </div>
-            </div>
-        </section>
-            <footer class="page-footer blue lighten-3">
-              <div class="container">
-                <div class="row">
-                  <div class="col s12 l6">
-                    <h5 class="black-text text-darken-2">About Us</h5>
-                    <p class="black-text">test....</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="footer-copyright yellow accent-1">
-              <div class="container center-align blue-text text-darken-2">All Rights Reserved &copy; 2020 Buckets Of Fun, Inc &nbsp;</div>
-            </div>
-    </footer>
+{% extends 'base.html' %} {% block content %}
+<!-- photo / grid -->
+  <div class="row">
+    <div class="col s12 l4">
+      <br>
+      <img
+        src="/static/main_app/images/pacman.png"
+        alt="about Start"
+        class="responsive-img"
+      />
+    </div>
+    <div class="col s12 l6">
+      <h3 class="blue-text text-darken-4">OUR MISSION</h3>
+      <p>
+        To provide an online hub for all to post, search, and showcase our very
+        own street arts in Austin, such as murals and graffitis, because we
+        believe in keeping Austin colorful and fun!
+      </p>
+    </div>
+  </div>
+{% endblock %}
