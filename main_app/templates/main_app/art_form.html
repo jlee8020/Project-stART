@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
- <section class="section container" id="add_art">
+ <!-- <section class="section container" id="add_art">
    <div class="row">
       <div class="col s12 l5">
         <h4 class="blue-text text-darken-2">Add an Art</h4>
@@ -25,9 +25,26 @@
               <input type="text" id="date" class="datepicker">
               <label for="date">Choose the Date Taken</label>
             </div>
+            <!-- <div class="input field">
+              <a href="#" type="submit" class="btn pink waves-effect waves-light">
+                <span>Add ART</span>
+                <i class="material-icons left">add_circle</i>
+              </a>
+            </div>
             <input type="submit" value="Submit this Art!" class="btn" />
       </form>
     </div>  
- </section>
+ </section> -->
+
+   <!-- Leaving the action empty makes the form post to the same url used to display it -->
+   <form action="" method="post">
+    <!-- Django requires the following for security purposes -->
+    {% csrf_token %}
+    <table>
+      <!-- Render the inputs inside of <tr>s & <td>s -->
+      {{ form.as_table }}
+    </table>
+    <input type="submit" value="Submit!" class="btn">
+  </form>
   
 {% endblock %}
