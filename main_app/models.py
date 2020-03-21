@@ -7,7 +7,7 @@ class Art(models.Model):
   name = models.CharField(max_length=100)
   artist = models.CharField(max_length=100)
   description = models.TextField(max_length=250)
-  yearCreated = models.IntegerField()
+  dateTaken = models.DateField('Date Taken')
   user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class Photo(models.Model):

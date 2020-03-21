@@ -20,12 +20,16 @@ class ArtCreate(LoginRequiredMixin, CreateView):
     model = Art
     fields = '__all__'
     # fields = ['name', 'artist', 'description', 'yearCreated']
-    success_url = 'art/'
-    # When valid art is added, assign a user as its owner.
+    success_url = '/art/'
+    
+    def get_absolute_url(self):
+        return reverse('art_detail', kwargs={'art_id': self.id})
 
+    # When valid art is added, assign a user as its owner.
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+
 
 
 def home(request):
