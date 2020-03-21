@@ -41,8 +41,12 @@
             <ul class="right hide-on-med-and-down">
               <li><a class="blue-text text-darken-2" href="{% url 'home' %}">Home</a></li>
               <li><a class="blue-text text-darken-2" href="{% url 'about' %}">About</a></li>
-              <li><a class="blue-text text-darken-2" href="{% url 'art_create' %}">Add an Art</a></li>
-              <li><a class="blue-text text-darken-2" href="{% url 'art_index' %}">View All Arts</a></li>
+              {% if user.is_authenticated %}
+                <li><a class="blue-text text-darken-2" href="{% url 'art_create' %}">Add an Art</a></li>
+                <li><a class="blue-text text-darken-2" href="{% url 'art_index' %}">View All Arts</a></li>
+              {% else %}
+                <li><a href="{% url 'login' %}">Log In</a></li>
+              {% endif %}
             </ul>
           </div>
         </nav>
@@ -50,8 +54,12 @@
       <ul class="sidenav" id="mobile-links">
         <li><a class="blue-text text-darken-2" href="{% url 'home' %}">Home</a></li>
         <li><a class="blue-text text-darken-2" href="{% url 'about' %}">About</a></li>
-        <li><a class="blue-text text-darken-2" href="{% url 'art_create' %}">Add an Art</a></li>
-        <li><a class="blue-text text-darken-2" href="{% url 'art_index' %}">View All Arts</a></li>
+        {% if user.is_authenticated %}
+          <li><a class="blue-text text-darken-2" href="{% url 'art_create' %}">Add an Art</a></li>
+          <li><a class="blue-text text-darken-2" href="{% url 'art_index' %}">View All Arts</a></li>
+        {% else %}
+          <li><a href="{% url 'login' %}">Log In</a></li>
+        {% endif %}
       </ul>
     <main class="container">
       {% block content %} 
