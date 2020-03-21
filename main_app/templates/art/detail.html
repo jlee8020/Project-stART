@@ -9,6 +9,7 @@
     <p>Art: {{ oneArt.artist }}</p>
     <p>Description: {{ oneArt.description }}</p>
     <div class="card-action">
+      <a href="{% url 'art_update' oneArt.id %}">Edit</a>
       <a href="{% url 'art_delete' oneArt.id %}">Delete</a>
     </div>
   </div>

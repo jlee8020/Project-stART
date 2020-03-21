@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.views.generic.edit import CreateView, DeleteView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from .models import Art, Photo
 
@@ -30,6 +30,10 @@ class ArtDelete(DeleteView):
     model = Art
     success_url = '/art/'
 
+class ArtUpdate(UpdateView):
+    model = Art
+    fields = '__all__'
+    success_url = '/art/'
 
 def home(request):
     return render(request, 'home.html')
