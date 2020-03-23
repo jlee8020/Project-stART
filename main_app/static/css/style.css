@@ -6,10 +6,32 @@ body {
   }
   
   main {
-    flex: 1 0 auto;
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    /* flex-direction: row; */
+
+    /* flex: 1 0 auto; */
     
   }
-
+  .main-content{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+#img-height{
+  height: 200px;
+}
+  /* .flex-container{
+    display: flex;
+    flex-direction: row;
+    width: 40%;
+    background-color: plum; }*/
+  
+    .card{
+    margin: 20px;
+    width: 25%;
+  }
   nav{
     display: flex;
     justify-content: flex-end;
