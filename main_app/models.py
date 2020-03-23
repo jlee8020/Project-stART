@@ -29,6 +29,9 @@ class Comment(models.Model):
     content = models.TextField(max_length=200)
     art = models.ForeignKey(Art, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f"{self.get_content_display()} on {self.date}"
+
     # change the default sort
     class Meta:
         ordering = ['-date']

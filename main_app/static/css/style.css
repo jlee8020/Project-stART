@@ -19,9 +19,16 @@ body {
     flex-direction: row-reverse;
     align-items: center;
   }
-#img-height{
+
+  .card-details{
+    display: flex;
+    min-width: 500px;
+  }
+
+
+/* #img-height{
   height: 200px;
-}
+} */
   /* .flex-container{
     display: flex;
     flex-direction: row;
