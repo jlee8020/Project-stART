@@ -97,11 +97,12 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
-# @login_required
+
+@login_required
 def add_comment(request, art_id):
-  form = CommentForm(request.POST)
-  if form.is_valid():
-    new_comment = form.save(commit=False)
-    new_comment.art_id = art_id
-    new_comment.save()
-  return redirect('detail', art_id=art_id)
+    form = CommentForm(request.POST)
+    if form.is_valid():
+        new_comment = form.save(commit=False)
+        new_comment.art_id = art_id
+        new_comment.save()
+    return redirect('art_detail', art_id=art_id)
