@@ -27,6 +27,10 @@ class ArtCreate(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
+class commentDelete(DeleteView):
+    model = Comment
+    success_url = '/'
+
 class ArtDelete(DeleteView):
     model = Art
     success_url = '/art/'
