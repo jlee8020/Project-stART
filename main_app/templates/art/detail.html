@@ -51,10 +51,11 @@
           <tr>
             <td>{{comment.content}}</td>
             <td>{{comment.date}}</td>
+            <td><a href="{% url 'comment_delete' comment.id %}" class="delete btn btn-danger">x</a></td>
           </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+          {% endfor %}
+        </tbody>
+      </table>
   </div>
 </div>
 

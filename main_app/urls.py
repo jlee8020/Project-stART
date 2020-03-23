@@ -12,6 +12,7 @@ urlpatterns = [
     path('art/<int:art_id>/add_comment/', views.add_comment, name='add_comment'),
     path('art/<int:pk>/update/', views.ArtUpdate.as_view(), name='art_update'),    
     path('art/<int:pk>/delete/', views.ArtDelete.as_view(), name='art_delete'),
+    path('art/comment/<int:pk>/delete/', views.commentDelete.as_view(), name='comment_delete'),
     path('accounts/signup/', views.signup, name='signup'),
     
 ]
