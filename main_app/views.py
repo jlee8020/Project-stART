@@ -81,6 +81,9 @@ def add_photo(request, art_id):
             print('An error occurred uploading file to S3')
     return redirect('art_detail', art_id=art_id)
 
+class PhotoDelete(DeleteView):
+    model = Photo
+    success_url = '/art/'
 
 def signup(request):
     error_message = ''
