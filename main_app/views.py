@@ -6,7 +6,8 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
-from .models import Art, Photo
+from .models import Art, Photo, Comment
+from .forms import CommentForm
 
 import uuid  # for generating random strings (what we name our photos)
 import boto3  # sdk to interact with aws bucket
@@ -52,7 +53,11 @@ def art_index(request):
 @login_required
 def art_detail(request, art_id):
     oneArt = Art.objects.get(id=art_id)
-    return render(request, 'art/detail.html', {'oneArt': oneArt})
+    comment_form = CommentForm()
+    return render(request, 'art/detail.html', {
+        'oneArt': oneArt,
+        'comment_form': comment_form
+    })
 
 
 @login_required
@@ -91,3 +96,12 @@ def signup(request):
     form = UserCreationForm()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
+
+# @login_required
+def add_comment(request, art_id):
+  form = CommentForm(request.POST)
+  if form.is_valid():
+    new_comment = form.save(commit=False)
+    new_comment.art_id = art_id
+    new_comment.save()
+  return redirect('detail', art_id=art_id)
