@@ -34,11 +34,11 @@
 </form>
 
 <!-- Comments Form -->
-    {% comment %} <form action="{% url 'add_comment' comment.id %}" method="post">
+    <form action="{% url 'add_comment' oneArt.id %}" method="post">
       {% csrf_token %}
       {{ comment_form.as_p }}
       <input type="submit" class="btn" value="Add Comment">
-    </form> {% endcomment %}
+    </form> 
   <!-- Comments List -->
     <table class="striped">
       <thead>
