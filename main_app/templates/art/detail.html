@@ -3,35 +3,37 @@
 
 <h1>Art Details</h1>
 
-<div class="card">
+<div class="card-details">
   <div class="card-content">
+    {% for photo in oneArt.photo_set.all %}
+    <section>
+    <img id="img-details" class="responsive-img card-panel" src="{{photo.url}}" />
+    {% empty %}
+    </section>
+    <div class="card-panel teal-text center-align">No Photos Uploaded</div>
+    {% endfor %}
+    <div>
     <span class="card-title">{{ oneArt.name }}</span>
     <p>Art: {{ oneArt.artist }}</p>
     <p>Description: {{ oneArt.description }}</p>
+  </div>
     <div class="card-action">
       <a href="{% url 'art_update' oneArt.id %}">Edit</a>
       <a href="{% url 'art_delete' oneArt.id %}">Delete</a>
     </div>
   </div>
+  <form
+    action="{% url 'add_photo' oneArt.id %}"
+    enctype="multipart/form-data"
+    method="POST"
+    class="card-panel"
+  >
+    {% csrf_token %}
+    <input type="file" name="photo-file" />
+    <br /><br />
+    <input type="submit" class="btn" value="Upload Photo" />
+  </form>
 </div>
-
-{% for photo in oneArt.photo_set.all %}
-<img class="responsive-img card-panel" src="{{photo.url}}" />
-{% empty %}
-<div class="card-panel teal-text center-align">No Photos Uploaded</div>
-{% endfor %}
-
-<form
-  action="{% url 'add_photo' oneArt.id %}"
-  enctype="multipart/form-data"
-  method="POST"
-  class="card-panel"
->
-  {% csrf_token %}
-  <input type="file" name="photo-file" />
-  <br /><br />
-  <input type="submit" class="btn" value="Upload Photo" />
-</form>
 
 <!-- Comments Form -->
     <form action="{% url 'add_comment' oneArt.id %}" method="post">
