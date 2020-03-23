@@ -1,15 +1,29 @@
-{% extends 'base.html' %} {% block content %}
-
-<h1>Art List</h1>
-
+{% extends 'base.html' %} 
+{%block h1%} <h3>All Arts List</h3>{%endblock h1%}
+{% block content %}
 {% for oneArt in art %}
+<!-- <div class="flex-container"> -->
 <div class="card">
-  <a href="{% url 'art_detail' oneArt.id %}">
-    <div class="card-content">
-      <span class="card-title">{{ oneArt.name }}</span>
-      <p>Artist: {{ oneArt.artist }}</p>
-      <p>Description: {{ oneArt.description }}</p>
+    <div class="card-image">
+      {% for photo in oneArt.photo_set.all %}
+      <img id="img-height" class="responsive-img" src="{{photo.url}}" />
+      <a href="#" class="btn-floating halfway-fab waves-effect waves-light pink">
+        <i class="material-icons">favorite</i>
+      </a>
+      {% empty %}
+      <div class="card-panel teal-text center-align">No Photos Uploaded</div>
+      {% endfor %}
+      </div>
+          <div class="card-content">
+            <span class="blue-text text-darken-2 card-title">{{ oneArt.name }}</span>
+            <p>{{ oneArt.description }}</p>
+          </div>
+            <div class="card-action">
+            <a class="btn waves-effect waves-light pink" href="{% url 'art_detail' oneArt.id %}">Details</a>
+            <i class="material-icons">more_horiz</i>
+          </a>
+            </div>
     </div>
-  </a>
 </div>
-{% endfor %} {% endblock %}
+{% endfor %}
+{% endblock %}
