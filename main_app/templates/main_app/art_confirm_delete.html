@@ -7,7 +7,11 @@
 
   <form action="" method="POST">
     {% csrf_token %}
-    <input type="submit" value="Yes - Delete!" class="btn">
+    <button class="btn waves-effect waves-light pink" type="submit" value="Yes - Delete!"  name="action">Delete
+      <i class="material-icons left">delete_forever</i>
     <a href="{% url 'art_detail' art.id %}">Nevermind, save this art!</a>
   </form>
 {% endblock %}
+
+
+

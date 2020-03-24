@@ -18,8 +18,8 @@
     <p>Description: {{ oneArt.description }}</p>
   </div>
     <div class="card-action">
-      <a href="{% url 'art_update' oneArt.id %}">Edit</a>
-      <a href="{% url 'art_delete' oneArt.id %}">Delete</a>
+      <a class="btn waves-effect waves-light pink" href="{% url 'art_update' oneArt.id %}" value="Edit">Edit<i class="material-icons left">edit</i></a>
+      <a class="btn waves-effect waves-light red" href="{% url 'art_delete' oneArt.id %}" value="delete">Delete<i class="material-icons left">delete_forever</i></a>
     </div>
   </div>
   <form
@@ -31,7 +31,8 @@
     {% csrf_token %}
     <input type="file" name="photo-file" />
     <br /><br />
-    <input type="submit" class="btn" value="Upload Photo" />
+    <button class="btn waves-effect waves-light blue" type="submit" value="Upload Photo" name="action">Upload Photo
+      <i class="material-icons left">add_a_photo</i>
   </form>
 </div>
 
@@ -39,7 +40,9 @@
     <form action="{% url 'add_comment' oneArt.id %}" method="post">
       {% csrf_token %}
       {{ comment_form.as_p }}
-      <input type="submit" class="btn" value="Add Comment">
+      <button class="btn waves-effect waves-light pink" type="submit" value="Add Comment" name="action">Add Comment
+        <i class="material-icons right">add_circle</i>
+      </button>
     </form> 
   <!-- Comments List -->
     <table class="striped">
@@ -51,7 +54,7 @@
           <tr>
             <td>{{comment.content}}</td>
             <td>{{comment.date}}</td>
-            <td><a href="{% url 'comment_delete' comment.id %}" class="delete btn btn-danger">x</a></td>
+            <td><a class="btn waves-effect waves-light red" href="{% url 'comment_delete' comment.id %}"><i class="material-icons">delete_forever</i></a></td>
           </tr>
           {% endfor %}
         </tbody>
@@ -60,3 +63,5 @@
 </div>
 
 {% endblock %}
+
+            
