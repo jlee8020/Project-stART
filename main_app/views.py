@@ -7,7 +7,7 @@ from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from .models import Art, Photo, Comment
-from .forms import CommentForm
+from .forms import CommentForm, ProfileForm, SignUpForm
 
 import uuid  # for generating random strings (what we name our photos)
 import boto3  # sdk to interact with aws bucket
@@ -15,7 +15,6 @@ import boto3  # sdk to interact with aws bucket
 # Add these "constants" below the imports
 S3_BASE_URL = 'https://s3-us-east-2.amazonaws.com/'
 BUCKET = 'start-streetart'
-
 
 class ArtCreate(LoginRequiredMixin, CreateView):
     model = Art
@@ -25,7 +24,6 @@ class ArtCreate(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
-
 
 class commentDelete(DeleteView):
     model = Comment
@@ -43,16 +41,13 @@ class ArtUpdate(UpdateView):
 def home(request):
     return render(request, 'home.html')
 
-
 def about(request):
     return render(request, 'about.html')
-
 
 @login_required
 def art_index(request):
     art = Art.objects.all()
     return render(request, 'art/index.html', {'art': art})
-
 
 @login_required
 def art_detail(request, art_id):
@@ -62,7 +57,6 @@ def art_detail(request, art_id):
         'oneArt': oneArt,
         'comment_form': comment_form
     })
-
 
 @login_required
 def add_photo(request, art_id):
@@ -94,18 +88,18 @@ def delete_photo(request, art_id):
 def signup(request):
     error_message = ''
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
+        sign_up_form = SignUpForm(request.POST)
+        if sign_up_form.is_valid():
+            user = sign_up_form.save()
+            # Profile.objects.create()
             login(request, user)
             return redirect('art_index')
         else:
             error_message = 'Invalid sign up - try again'
     # A bad POST or a GET request, so render signup.html with an empty form
-    form = UserCreationForm()
-    context = {'form': form, 'error_message': error_message}
+    sign_up_form = SignUpForm()
+    context = {'sign_up_form': sign_up_form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
-
 
 @login_required
 def add_comment(request, art_id):
