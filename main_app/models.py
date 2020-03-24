@@ -1,10 +1,25 @@
 from django.contrib.auth.models import User
+from django.dispatch import receiver
 from django.db import models
+from django.db.models.signals import post_save
 from django.urls import reverse
 import datetime
+from phonenumber_field.modelfields import PhoneNumberField
 
-# Create your models here.
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    phone = PhoneNumberField()
 
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+    instance.profile.save()
+
+class ProfilePhoto(models.Model):
+    url = models.CharField(max_length=200)
+    filename = models.CharField(max_length=50)
+    profile = models.OneToOneField(Profile, on_delete=models.CASCADE)
 
 class Art(models.Model):
     name = models.CharField(max_length=100)
@@ -18,11 +33,10 @@ class Art(models.Model):
     def get_absolute_url(self):
         return reverse('art_detail', kwargs={'art_id': self.id})
 
-
 class Photo(models.Model):
     url = models.CharField(max_length=200)
+    filename = models.CharField(max_length=50)
     art = models.ForeignKey(Art, on_delete=models.CASCADE)
-
 
 class Comment(models.Model):
     date = models.DateField(default=datetime.datetime.now)
@@ -32,6 +46,6 @@ class Comment(models.Model):
     def __str__(self):
         return f"{self.get_content_display()} on {self.date}"
 
-    # change the default sort
+    # change the default sort for comments
     class Meta:
         ordering = ['-date']
