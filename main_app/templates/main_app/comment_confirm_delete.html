@@ -2,11 +2,21 @@
 
 {% block content %}
     
-  <h3 class="text-center display-3">Delete Comment</h3> 
-  <h4 class="text-center">Are you sure you want to delete <span class="teal-text">{{ comment.body }}</span>?</h4>
-
+  <div>
+    <h4 class="text-center display-3">Delete Comment</h4> 
+  <div>
+  <div><h5 class="text-center">Are you sure you want to delete <span class="teal-text">{{ comment.body }}</span>?</h5></div>
+  <div>
   <form id="newPost" action="" method="POST">
     {% csrf_token %}
-    <input type="submit" value="Yes - Delete!" class="btn btn-dark btn-lg btn-block">
+    <button class="btn waves-effect waves-light pink" type="submit" value="Yes - Delete!"  name="action">Delete
+      <i class="material-icons left">delete_forever</i>
   </form>
+  <br/>
+</div>
+</div>
+</div>
 {% endblock %}
+
+<!-- <button class="btn waves-effect waves-light pink" type="submit" value="Add Comment" name="action">Add Comment
+  <i class="material-icons right">add_circle</i> -->
