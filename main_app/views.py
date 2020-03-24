@@ -85,7 +85,12 @@ def add_photo(request, art_id):
             print('An error occurred uploading file to S3')
     return redirect('art_detail', art_id=art_id)
 
-
+def delete_photo(request, art_id):
+    s3 = boto3.resource('s3')
+    photo = s3.Object('start-streetart', '59a0c7.jpg')
+    photo.delete()
+    return redirect('art_detail', art_id=art_id)
+    
 def signup(request):
     error_message = ''
     if request.method == 'POST':
