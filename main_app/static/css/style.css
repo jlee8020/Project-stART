@@ -24,7 +24,9 @@ body {
     display: flex;
     min-width: 500px;
   }
-
+  .parallax{
+    position:static;
+  }
 
 /* #img-height{
   height: 200px;

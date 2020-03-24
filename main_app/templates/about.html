@@ -1,16 +1,16 @@
 {% extends 'base.html' %} {% block content %}
 <!-- photo / grid -->
+<section class="container section" id="photo's">
   <div class="row">
-    <div class="col s12 l4">
-      <br>
+    <div class="col s12 l6">
       <img
         src="/static/main_app/images/pacman.png"
         alt="about Start"
-        class="responsive-img"
+        class="responsive-img materialboxed"
       />
     </div>
-    <div class="col s12 l6">
-      <h3 class="blue-text text-darken-4">OUR MISSION</h3>
+    <div class="col s12 l4 offset-l1">
+      <h5 class="blue-text text-darken-4"><b>Our Mission</b></h5>
       <p>
         To provide an online hub for all to post, search, and showcase our very
         own street arts in Austin, such as murals and graffitis, because we
@@ -18,4 +18,42 @@
       </p>
     </div>
   </div>
+  <div class="row">
+    <div class="col s12 l6 push-l7 offset-l1">
+      <img
+        src="/static/main_app/images/about3.png"
+        alt="about Start-Why-Start"
+        class="responsive-img materialboxed"
+      />
+    </div>
+    <div class="col s12 l4 pull-l5 right-align offset-l1">
+      <h5 class="blue-text text-darken-4"><b>About stART</b></h5>
+      <p> stART short for street art - is an online hub for all things murals and graffiti in Austin, Texas. <br> 
+      <br> A virtual place where artists, Austinites, tourists, and art enthusiasts alike can upload 
+                their favorite arts for all to see and admire.
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12 l6 ">
+      <img
+        src="/static/main_app/images/webelong.png"
+        alt="about Start-Meet-The-Team"
+        class="responsive-img materialboxed"
+      />
+    </div>
+    <div class="col s12 l4 offset-l1">
+      <h5 class="blue-text text-darken-4"><b>Meet Our Team</b></h5>
+      <p>
+       Technical Skills  
+      </p>
+    </div>
+  </div>
+</section>
+<!-- parallax -->
+<div class="parallax-container">
+<div class="parallax">
+  <img src="/static/main_app/images/greetings.png" alt="" class="responsive-img">
+</div>
+</div>
 {% endblock %}

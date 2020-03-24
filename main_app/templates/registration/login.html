@@ -1,12 +1,22 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+{% block content %}
 
-<h1>Log into stART</h1>
+<div>
+  <h3>Log into stART</h3>
 
 <form method="post" action="{% url 'login' %}">
   {% csrf_token %}
   {{ form.as_p }}
-  <input type="submit" class="btn" value="login">
-  <input type="hidden" name="next" value="{{ next }}">
+  <button class="btn waves-effect waves-light pink" type="submit" value="login" name="action">login
+    <input type="hidden" name="next" value="{{ next }}">
+    <i class="material-icons right">send</i>
+  </button>
 </form>
-
+<br>
+</div>
 {% endblock %}
+
+
+
+
+
