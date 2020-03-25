@@ -67,22 +67,23 @@ def add_photo(request, art_id):
         # need a unique "key" for S3 / needs image file extension too
         key = uuid.uuid4().hex[:6] + \
             photo_file.name[photo_file.name.rfind('.'):]
-        # just in case something goes wrong
         try:
             s3.upload_fileobj(photo_file, BUCKET, key)
             # build the full url string
             url = f"{S3_BASE_URL}{BUCKET}/{key}"
-            # we can assign to art_id or at (if you have an art object)
-            photo = Photo(url=url, art_id=art_id)
+            user = request.user
+            photo = Photo(url=url, art_id=art_id, filename=key, user=user)
             photo.save()
         except:
             print('An error occurred uploading file to S3')
     return redirect('art_detail', art_id=art_id)
 
-def delete_photo(request, art_id):
+def delete_photo(request, art_id, photo_id):
+    dbPhoto = Photo.objects.get(id=photo_id)
     s3 = boto3.resource('s3')
-    photo = s3.Object('start-streetart', '59a0c7.jpg')
+    photo = s3.Object('start-streetart', dbPhoto.filename)
     photo.delete()
+    dbPhoto.delete()
     return redirect('art_detail', art_id=art_id)
 
 @login_required
@@ -91,6 +92,7 @@ def add_comment(request, art_id):
     if form.is_valid():
         new_comment = form.save(commit=False)
         new_comment.art_id = art_id
+        new_comment.user_id = request.user.id
         new_comment.save()
     return redirect('art_detail', art_id=art_id)
 
@@ -151,9 +153,6 @@ def add_profile_photo(request):
             url = f"{S3_BASE_URL}{BUCKET}/{key}"
             filename = key
             profile = request.user.profile
-            print(url)
-            print(filename)
-            print(profile)
             # we can assign to art_id or at (if you have an art object)
             photo = ProfilePhoto(url=url, filename=filename, profile=profile)
             photo.save()
