@@ -11,7 +11,7 @@ urlpatterns = [
     path('art/<int:art_id>/add_photo/', views.add_photo, name='add_photo'),
     path('art/<int:art_id>/delete_photo/<int:photo_id>', views.delete_photo, name='delete_photo'),
     path('art/<int:art_id>/add_comment/', views.add_comment, name='add_comment'),
-
+    path('art/<int:pk>/owner_update/', views.ArtOwnerUpdate.as_view(), name='art_owner_update'),
     path('art/<int:pk>/update/', views.ArtUpdate.as_view(), name='art_update'),    
     path('art/<int:pk>/delete/', views.ArtDelete.as_view(), name='art_delete'),
     path('art/comment/<int:pk>/delete/', views.commentDelete.as_view(), name='comment_delete'),
