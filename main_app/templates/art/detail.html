@@ -6,7 +6,7 @@
     {% for photo in oneArt.photo_set.all %}
     <section>
     <img id="img-details" class="responsive-img card-panel" src="{{photo.url}}" />
-    <a href="{% url 'delete_photo' photo.id %}">Delete Photo</a>
+    <a href="{% url 'delete_photo' oneArt.id photo.id %}">Delete Photo</a>
     {% empty %}
     </section>
     <div class="card-panel teal-text center-align">No Photos Uploaded</div>
