@@ -1,6 +1,47 @@
-<form action="{% url 'update_profile' %}" method="post">
-  {% csrf_token %}
-  {{ user_form.as_p }}
-  {{ profile_form.as_p }}
-  <input type="submit" class="btn" value="Add Comment">
-</form> 
+{% extends 'base.html' %}
+{% block content %}
+
+{% if request.user.profile.profilephoto %}
+<section>
+<img style="width: 200px;" id="img-details" class="responsive-img card-panel" src="{{request.user.profile.profilephoto.url}}" />
+<a href="{% url 'delete_photo' request.user.profile.profilephoto.id %}">Delete Photo</a>
+</section>
+{% else %}
+<div class="card-panel teal-text center-align">No Profile Uploaded</div>
+{% endif %}
+
+<div class="row">
+    <div class="col s12 l6 ">
+        <span class="card-title">{{ user.first_name }} {{user.last_name}}</span>
+        <p>username: {{ user.username }}</p>
+        <p>email: {{ user.email }}</p>
+        <p>current phone number: {{user.profile.phone}}</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12 l6 ">
+        <form action="{% url 'update_profile' %}" method="post">
+          {% csrf_token %}
+          <h7>Enter phone number in this format: +15125551234</h7>
+          <p>Only US phone numbers are accepted.</p>
+          {{ profile_form.as_p }}
+          <input type="submit" class="btn" value="Change Phone Number">
+        </form> 
+    </div>
+</div>
+
+<form
+action="{% url 'add_profile_photo' %}"
+enctype="multipart/form-data"
+method="POST"
+class="card-panel"
+>
+{% csrf_token %}
+<input type="file" name="photo-file" />
+<br /><br />
+<button class="btn waves-effect waves-light blue" type="submit" value="Upload Profile Photo" name="action">Upload Profile Photo
+  <i class="material-icons left">add_a_photo</i>
+</form>
+
+{% endblock %}
