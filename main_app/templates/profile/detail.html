@@ -10,7 +10,7 @@
     <div class="row valign-wrapper">
       <div class="col s2">
       <img class="circle responsive-img"  id="img-details" src="{{request.user.profile.profilephoto.url}}" />
-        <a href="{% url 'delete_photo' request.user.profile.profilephoto.id %}">Delete Photo</a>
+        <a href="{% url 'delete_profile_photo' %}">Delete Photo</a>
       </div>
       <div class="col s10">
         <span class="black-text">

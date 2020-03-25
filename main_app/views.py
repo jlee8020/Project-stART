@@ -85,7 +85,6 @@ def delete_photo(request, art_id):
     photo.delete()
     return redirect('art_detail', art_id=art_id)
 
-
 @login_required
 def add_comment(request, art_id):
     form = CommentForm(request.POST)
@@ -147,17 +146,11 @@ def add_profile_photo(request):
             photo_file.name[photo_file.name.rfind('.'):]
         # just in case something goes wrong
         try:
-            existing_profile_photo = request.user.profile.profilephoto
-            if existing_profile_photo:
-                s3del = boto3.resource('s3')
-                photo = s3del.Object(BUCKET, existing_profile_photo.filename)
-                photo.delete()
-                existing_profile_photo.delete()
             s3.upload_fileobj(photo_file, BUCKET, key)
             # build the full url string
             url = f"{S3_BASE_URL}{BUCKET}/{key}"
-            filename=key
-            profile=request.user.profile
+            filename = key
+            profile = request.user.profile
             print(url)
             print(filename)
             print(profile)
@@ -166,4 +159,13 @@ def add_profile_photo(request):
             photo.save()
         except:
             print('An error occurred uploading file to S3')
+    return redirect('profile_detail')
+
+@login_required
+def delete_profile_photo(request):
+    existing_profile_photo = request.user.profile.profilephoto
+    s3del = boto3.resource('s3')
+    photo = s3del.Object(BUCKET, existing_profile_photo.filename)
+    photo.delete()
+    existing_profile_photo.delete()
     return redirect('profile_detail')
