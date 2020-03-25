@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
-from .models import Art, Photo, Comment
+from .models import Art, Photo, Comment, ProfilePhoto
 from .forms import CommentForm, ProfileForm, SignUpForm
 
 import uuid  # for generating random strings (what we name our photos)
@@ -84,7 +84,17 @@ def delete_photo(request, art_id):
     photo = s3.Object('start-streetart', '59a0c7.jpg')
     photo.delete()
     return redirect('art_detail', art_id=art_id)
-    
+
+
+@login_required
+def add_comment(request, art_id):
+    form = CommentForm(request.POST)
+    if form.is_valid():
+        new_comment = form.save(commit=False)
+        new_comment.art_id = art_id
+        new_comment.save()
+    return redirect('art_detail', art_id=art_id)
+
 def signup(request):
     error_message = ''
     if request.method == 'POST':
@@ -102,10 +112,58 @@ def signup(request):
     return render(request, 'registration/signup.html', context)
 
 @login_required
-def add_comment(request, art_id):
-    form = CommentForm(request.POST)
-    if form.is_valid():
-        new_comment = form.save(commit=False)
-        new_comment.art_id = art_id
-        new_comment.save()
-    return redirect('art_detail', art_id=art_id)
+def profile_detail(request):
+    profile_form = ProfileForm(instance=request.user)
+    return render(request, 'profile/detail.html', {
+        'user': request.user,
+        'profile_form': profile_form
+    })
+
+@login_required
+def update_profile(request):
+    user = request.user
+    if request.method == 'POST':
+        profile_form = ProfileForm(request.POST, instance=request.user.profile)
+        if profile_form.is_valid():
+            profile_form.save()
+            return redirect('profile_detail')
+        else:
+            messages.error(request, _('Please correct the error below.'))
+    else:
+        profile_form = ProfileForm(instance=request.user.profile)
+    return render(request, 'profile/detail.html', {
+        'user': user,
+        'profile_form': profile_form
+    })
+
+@login_required
+def add_profile_photo(request):
+    # photo-file will be the "name" attribute on the <input type="file">
+    photo_file = request.FILES.get('photo-file', None)
+    if photo_file:
+        s3 = boto3.client('s3')
+        # need a unique "key" for S3 / needs image file extension too
+        key = uuid.uuid4().hex[:6] + \
+            photo_file.name[photo_file.name.rfind('.'):]
+        # just in case something goes wrong
+        try:
+            existing_profile_photo = request.user.profile.profilephoto
+            if existing_profile_photo:
+                s3del = boto3.resource('s3')
+                photo = s3del.Object(BUCKET, existing_profile_photo.filename)
+                photo.delete()
+                existing_profile_photo.delete()
+            s3.upload_fileobj(photo_file, BUCKET, key)
+            # build the full url string
+            url = f"{S3_BASE_URL}{BUCKET}/{key}"
+            filename=key
+            profile=request.user.profile
+            print(url)
+            print(filename)
+            print(profile)
+            # we can assign to art_id or at (if you have an art object)
+            photo = ProfilePhoto(url=url, filename=filename, profile=profile)
+            photo.save()
+        except:
+            print('An error occurred uploading file to S3')
+    return redirect('profile_detail')
