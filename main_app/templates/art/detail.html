@@ -18,10 +18,14 @@
     <p>Art: {{ oneArt.artist }}</p>
     <p>Description: {{ oneArt.description }}</p>
   </div>
-    <div class="card-action">
-      <a class="btn waves-effect waves-light pink" href="{% url 'art_update' oneArt.id %}" value="Edit">Edit<i class="material-icons left">edit</i></a>
+  <div class="card-action">
+    {% if user == oneArt.user %}
+      <a class="btn waves-effect waves-light pink" href="{% url 'art_owner_update' oneArt.id %}" value="Edit">Edit<i class="material-icons left">edit</i></a>
       <a class="btn waves-effect waves-light red" href="{% url 'art_delete' oneArt.id %}" value="delete">Delete Art<i class="material-icons left">delete_forever</i></a>
-    </div>
+    {% else %}
+      <a class="btn waves-effect waves-light pink" href="{% url 'art_update' oneArt.id %}" value="Edit">Edit<i class="material-icons left">edit</i></a>
+    {% endif %}
+  </div>
   <div class="col s12 l6">
   <form
     action="{% url 'add_photo' oneArt.id %}"
@@ -49,14 +53,18 @@
   <!-- Comments List -->
     <table class="striped">
       <thead>
-        <tr><th>Comment</th><th>Date</th></tr>
+        <tr><th>Comment</th><th>Date</th><th>Delete</th></tr>
       </thead>
       <tbody>
         {% for comment in oneArt.comment_set.all %}
           <tr>
             <td>{{comment.content}}</td>
             <td>{{comment.date}}</td>
-            <td><a class="btn waves-effect waves-light red" href="{% url 'comment_delete' comment.id %}"><i class="material-icons">delete_forever</i></a></td>
+            {% if user == comment.user %}
+              <td><a class="btn waves-effect waves-light red" href="{% url 'comment_delete' comment.id %}"><i class="material-icons">delete_forever</i></a></td>
+            {% else%}
+              <td></td>
+            {% endif %}
           </tr>
           {% endfor %}
         </tbody>
