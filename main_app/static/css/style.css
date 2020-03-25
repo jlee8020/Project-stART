@@ -45,3 +45,23 @@ body {
     padding-top: 0;
     text-align: right;
   }
+
+.swatch-yellow {
+  background-color: #E8D36A;
+}
+
+.swatch-pink {
+  background-color: #D9669B;
+}
+
+.swatch-blue1 {
+  background-color: #0455BF;
+}
+
+.swatch-blue2 {
+  background-color: #049dd9;
+}
+
+.swatch-blue3 {
+  background-color: #05C7F2;
+}
