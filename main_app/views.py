@@ -55,7 +55,8 @@ def art_detail(request, art_id):
     comment_form = CommentForm()
     return render(request, 'art/detail.html', {
         'oneArt': oneArt,
-        'comment_form': comment_form
+        'comment_form': comment_form,
+        'user': request.user
     })
 
 @login_required
