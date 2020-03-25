@@ -2,46 +2,62 @@
 {% block content %}
 
 {% if request.user.profile.profilephoto %}
-<section>
-<img style="width: 200px;" id="img-details" class="responsive-img card-panel" src="{{request.user.profile.profilephoto.url}}" />
-<a href="{% url 'delete_photo' request.user.profile.profilephoto.id %}">Delete Photo</a>
-</section>
+<!-- <section> -->
+<div class="col s12 m8 offset-m2 l6 offset-l3"></div>
+<!-- <div class="col s12 l6 "> -->
+  <!-- style="width: 200px;"  -->
+  <div class="card-panel grey lighten-5 z-depth-1">
+    <div class="row valign-wrapper">
+      <div class="col s2">
+      <img class="circle responsive-img"  id="img-details" src="{{request.user.profile.profilephoto.url}}" />
+        <a href="{% url 'delete_photo' request.user.profile.profilephoto.id %}">Delete Photo</a>
+      </div>
+      <div class="col s10">
+        <span class="black-text">
+        <p>{{ user.first_name }} {{user.last_name}}</p>
+      </span>
+    </div>
+  </div>
+</div>
+</div>
 {% else %}
-<div class="card-panel teal-text center-align">No Profile Uploaded</div>
+<div class="col s12 l4 responsive-img card-panel teal-text center-align">No Profile Uploaded
+<br>
+  <form
+  class="row"
+  action="{% url 'add_profile_photo' %}"
+  enctype="multipart/form-data"
+  method="POST"
+  >
+  {% csrf_token %}
+  <input type="file" name="photo-file" />
+  <br /><br />
+  <button class="btn waves-effect waves-light blue" type="submit" value="Upload Profile Photo" name="action">Upload Profile Photo
+    <i class="material-icons left">add_a_photo</i>
+  </form>
+  </div>
+</div>
 {% endif %}
-
 <div class="row">
     <div class="col s12 l6 ">
-        <span class="card-title">{{ user.first_name }} {{user.last_name}}</span>
+        <span class="card-title"><h6>{{ user.first_name }} {{user.last_name}}</h6></span>
         <p>username: {{ user.username }}</p>
         <p>email: {{ user.email }}</p>
-        <p>current phone number: {{user.profile.phone}}</p>
+        <p>phone number: {{user.profile.phone}}</p>
     </div>
 </div>
-
 <div class="row">
-    <div class="col s12 l6 ">
-        <form action="{% url 'update_profile' %}" method="post">
+<form class="col 6" action="{% url 'update_profile' %}" method="post">
+  <div class="row">
+    <div class="input-field col s6">
           {% csrf_token %}
-          <h7>Enter phone number in this format: +15125551234</h7>
-          <p>Only US phone numbers are accepted.</p>
+          <p>Only US phone numbers are accepted (format: +15125551234)</p>
           {{ profile_form.as_p }}
-          <input type="submit" class="btn" value="Change Phone Number">
+          <button  placeholder="this format: +15125551234" type="submit" class="btn waves-effect waves-light pink" value="Change">Update
+          <i class="material-icons right">phone_iphone</i>
+          </button>
         </form> 
     </div>
-</div>
-
-<form
-action="{% url 'add_profile_photo' %}"
-enctype="multipart/form-data"
-method="POST"
-class="card-panel"
->
-{% csrf_token %}
-<input type="file" name="photo-file" />
-<br /><br />
-<button class="btn waves-effect waves-light blue" type="submit" value="Upload Profile Photo" name="action">Upload Profile Photo
-  <i class="material-icons left">add_a_photo</i>
-</form>
+</div><br>
 
 {% endblock %}
