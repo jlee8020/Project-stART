@@ -1,9 +1,7 @@
 {% extends 'base.html' %} 
 {% block content %}
-
 <h1>Art Details</h1>
-
-<div class="card-details">
+<div class="col s12 l4 card-details">
   <div class="card-content">
     {% for photo in oneArt.photo_set.all %}
     <section>
@@ -20,9 +18,9 @@
   </div>
     <div class="card-action">
       <a class="btn waves-effect waves-light pink" href="{% url 'art_update' oneArt.id %}" value="Edit">Edit<i class="material-icons left">edit</i></a>
-      <a class="btn waves-effect waves-light red" href="{% url 'art_delete' oneArt.id %}" value="delete">Delete<i class="material-icons left">delete_forever</i></a>
+      <a class="btn waves-effect waves-light red" href="{% url 'art_delete' oneArt.id %}" value="delete">Delete Art<i class="material-icons left">delete_forever</i></a>
     </div>
-  </div>
+  <div class="col s12 l6">
   <form
     action="{% url 'add_photo' oneArt.id %}"
     enctype="multipart/form-data"
@@ -36,7 +34,8 @@
       <i class="material-icons left">add_a_photo</i>
   </form>
 </div>
-
+</div>
+</div>
 <!-- Comments Form -->
     <form action="{% url 'add_comment' oneArt.id %}" method="post">
       {% csrf_token %}
