@@ -19,11 +19,10 @@
         background: url(/static/main_app/images/home_background1.jpg);
         background-size: cover;
         background-position: center;
-        font-family: 'Playfair Display', serif;
       }
 
       .home-text {
-        font-family: 'Baloo 2', cursive;
+        font-family: 'Baloo 2', sans-serif;
         font-size: 20px;
         display: flex;
         color: white;
@@ -32,7 +31,7 @@
       }
 
       #home-tagline {
-        font-family: 'Baloo 2', cursive;
+        font-family: 'Baloo 2', sans-serif;
         font-size: 25px;
         display: flex;
         color: white;
@@ -76,9 +75,9 @@
         </div>
         <!-- sidenav -->
         <ul class="sidenav" id="mobile-links">
-          <li><a class="blue-text text-darken-3" href="{% url 'art_index' %}">View All Art</a></li>
           <li><a class="blue-text text-darken-2" href="{% url 'home' %}">Home</a></li>
           <li><a class="blue-text text-darken-2" href="{% url 'about' %}">About</a></li>
+          <li><a class="blue-text text-darken-3" href="{% url 'art_index' %}">View All Art</a></li>
         {% if user.is_authenticated %}
           <li><a class="blue-text text-darken-2" href="{% url 'art_create' %}">Add to Art</a></li>            <li><a class="blue-text text-darken-2" href="{% url 'art_index' %}">View All Art</a></li>
           <li><a class="blue-text text-darken-2" href="">View Profile</a></li>
