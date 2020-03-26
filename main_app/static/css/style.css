@@ -1,8 +1,8 @@
-header{
+#pre-footer{
   background: url(/static/main_app/images/austin.jpg);
   background-size: cover;
   background-position: center;
-  min-height: 400px;
+  min-height: 220px;
 }
 .section{
   padding-top: 4vw;
