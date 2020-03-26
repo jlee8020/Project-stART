@@ -45,9 +45,6 @@ class Comment(models.Model):
     art = models.ForeignKey(Art, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    # def __str__(self):
-    #     return f"{self.get_content_display()} on {self.date}"
-
     # change the default sort for comments
     class Meta:
         ordering = ['-date']
