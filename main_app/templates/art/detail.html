@@ -15,8 +15,9 @@
     {% endfor %}
     <div>
     <span class="card-title">{{ oneArt.name }}</span>
-    <p>Art: {{ oneArt.artist }}</p>
+    <p>Artist: {{ oneArt.artist }}</p>
     <p>Description: {{ oneArt.description }}</p>
+    <p>Added by: {{oneArt.user.first_name}} {{oneArt.user.last_name}}</p>
   </div>
   <div class="card-action">
     {% if user == oneArt.user %}
