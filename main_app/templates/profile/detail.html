@@ -8,8 +8,8 @@
   <ul class="collection with-header">
     <li class="collection-header">
       <div class="card z-depth-3">
-        <div class="card-content">
-          <img class="circle responsive-img"  id="img-details" src="{{request.user.profile.profilephoto.url}}" />
+        <div style="width: 128;" class="card-content">
+          <img style="object-fit: cover; height: 80px; width: 80px;" class="circle"  id="img-details" src="{{request.user.profile.profilephoto.url}}" />
         </div>
         <div>
           <a href="{% url 'delete_profile_photo' %}">Delete Photo</a> 

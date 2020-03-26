@@ -53,11 +53,12 @@
   <!-- Comments List -->
     <table class="striped">
       <thead>
-        <tr><th>User</th><th>Comment</th><th>Date</th><th>Delete</th></tr>
+        <tr><th>Profile Photo</th><th>User</th><th>Comment</th><th>Date</th><th>Delete</th></tr>
       </thead>
       <tbody>
         {% for comment in oneArt.comment_set.all %}
           <tr>
+            <td><img style="object-fit: cover; height: 60px; width: 60px;" class="circle" src="{{comment.user.profile.profilephoto.url}}" /></td>
             <td>{{comment.user.first_name}} {{comment.user.last_name}}</td>
             <td>{{comment.content}}</td>
             <td>{{comment.date}}</td>
