@@ -53,11 +53,12 @@
   <!-- Comments List -->
     <table class="striped">
       <thead>
-        <tr><th>Comment</th><th>Date</th><th>Delete</th></tr>
+        <tr><th>User</th><th>Comment</th><th>Date</th><th>Delete</th></tr>
       </thead>
       <tbody>
         {% for comment in oneArt.comment_set.all %}
           <tr>
+            <td>{{comment.user.first_name}} {{comment.user.last_name}}</td>
             <td>{{comment.content}}</td>
             <td>{{comment.date}}</td>
             {% if user == comment.user %}
