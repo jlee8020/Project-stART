@@ -6,6 +6,12 @@ from django.urls import reverse
 import datetime
 from phonenumber_field.modelfields import PhoneNumberField
 
+PRESENT = (
+    ('Yes', 'Yes'),
+    ('At Risk', 'At Risk'),
+    ('No', 'No')
+)
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone = PhoneNumberField()
@@ -26,6 +32,11 @@ class Art(models.Model):
     artist = models.CharField(max_length=100)
     description = models.TextField(max_length=250)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    present = models.CharField(
+        max_length=7,
+        choices=PRESENT,
+        default=PRESENT[0][0]
+    )
 
     def __str__(self):
         return self.name
@@ -44,9 +55,6 @@ class Comment(models.Model):
     content = models.TextField(max_length=200)
     art = models.ForeignKey(Art, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-
-    # def __str__(self):
-    #     return f"{self.get_content_display()} on {self.date}"
 
     # change the default sort for comments
     class Meta:

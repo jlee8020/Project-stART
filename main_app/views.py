@@ -35,12 +35,12 @@ class ArtDelete(DeleteView):
 
 class ArtOwnerUpdate(UpdateView):
     model = Art
-    fields = ['description', 'artist', 'name']
+    fields = ['description', 'artist', 'name', 'present']
     success_url = '/art/'
 
 class ArtUpdate(UpdateView):
     model = Art
-    fields = ['description']
+    fields = ['present']
     success_url = '/art/'
 
 def home(request):

@@ -15,8 +15,10 @@
     {% endfor %}
     <div>
     <span class="card-title">{{ oneArt.name }}</span>
-    <p>Art: {{ oneArt.artist }}</p>
+    <p>Artist: {{ oneArt.artist }}</p>
     <p>Description: {{ oneArt.description }}</p>
+    <p>Added by: {{oneArt.user.first_name}} {{oneArt.user.last_name}}</p>
+    <p>Art is still present: {{oneArt.present}}</p>
   </div>
   <div class="card-action">
     {% if user == oneArt.user %}
@@ -58,7 +60,13 @@
       <tbody>
         {% for comment in oneArt.comment_set.all %}
           <tr>
-            <td><img style="object-fit: cover; height: 60px; width: 60px;" class="circle" src="{{comment.user.profile.profilephoto.url}}" /></td>
+            <td>
+              {% if comment.user.profile.profilephoto %}
+                <img style="object-fit: cover; height: 60px; width: 60px;" class="circle" src="{{comment.user.profile.profilephoto.url}}" />
+              {% else %}
+                <img style="object-fit: cover; height: 60px; width: 60px;" class="circle" src="/static/main_app/images/defaultProfile.png" />
+              {% endif %}
+            </td>
             <td>{{comment.user.first_name}} {{comment.user.last_name}}</td>
             <td>{{comment.content}}</td>
             <td>{{comment.date}}</td>
