@@ -65,3 +65,7 @@ body {
 .swatch-blue3 {
   background-color: #05C7F2;
 }
+
+#logo {
+  padding: 5px;
+}
