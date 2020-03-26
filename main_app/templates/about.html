@@ -1,59 +1,58 @@
 {% extends 'base.html' %} {% block content %}
 <!-- photo / grid -->
+<nav><h4 class="blue-text text-darken-4">About Us</h4></nav>
+<ul id="slide-out" class="sidenav">
+  <li>
+    <img class="circle responsive-img" src="/static/main_app/images/teamwork.jpg"></a>
+  </li>
+    <h5 class="center-align">Meet Our Team</h5>
+      <li><div class="divider"></div></li>
+      <li><a class="waves-effect" href="#!">Brandon Carter</a></li>
+      <li><a class="subheader">Scrum Master</a></li>
+      <li><a class="subheader">Code Analysis</a></li>
+      <li><a class="subheader">CSS Master</a></li>
+
+      <li><div class="divider"></div></li>
+      <li><a class="waves-effect" href="#!">David Stinson</a></li>
+      <li><a class="subheader">Data Manager</a></li>
+      <li><a class="subheader">Authentication</a></li>
+      <li><a class="subheader">Deployment</a></li>
+
+      <li><div class="divider"></div></li>
+      <li><a class="waves-effect" href="#!">Jan Lee</a></li>
+      <li><a class="subheader">WorkFlow Lead</a></li>
+      <li><a class="subheader">Pitch Deck</a></li>
+      <li><a class="subheader">Testing/Debugging</a></li>
+</ul>
+<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 <section class="container section" id="photo's">
   <div class="row">
-    <div class="col s12 l6">
-      <img
-        src="/static/main_app/images/pacman.jpg"
-        alt="about Start"
-        class="responsive-img materialboxed"
-      />
+    <div class="col s12 pull-l1 l6">
+      <img src="/static/main_app/images/pacman.jpg" alt="about Start" class="responsive-img materialboxed"/>
     </div>
-    <div class="col s12 l4 offset-l1">
+    <br>
+    <div class="col s12 l4 offset-1">
       <h5 class="blue-text text-darken-4"><b>Our Mission</b></h5>
-      <p>
-        To provide an online hub for all to post, search, and showcase our very
-        own street arts in Austin, such as murals and graffitis, because we
-        believe in keeping Austin colorful and fun!
-      </p>
+        <p>
+          To provide an online hub for all to post, search, and showcase our very
+          own street arts in Austin, such as murals and graffitis, because we
+          believe in keeping Austin colorful and fun!
+        </p>
     </div>
   </div>
   <div class="row">
-    <div class="col s12 l6 push-l7 offset-l1">
-      <img
-        src="/static/main_app/images/about3.jpg"
-        alt="about Start-Why-Start"
-        class="responsive-img materialboxed"
-      />
+    <div class="col s12 l6 push-l4 offset-l1">
+      <img src="/static/main_app/images/about3.jpg" alt="about Start-Why-Start" class="responsive-img materialboxed"/>
     </div>
-    <div class="col s12 l4 pull-l5 right-align offset-l1">
+    <br>
+    <div class="col s12 l4 pull-l8 right-align offset-l1">
       <h5 class="blue-text text-darken-4"><b>About stART</b></h5>
-      <p> stART short for street art - is an online hub for all things murals and graffiti in Austin, Texas. <br> 
-      <br> A virtual place where artists, Austinites, tourists, and art enthusiasts alike can upload 
-                their favorite arts for all to see and admire.
-      </p>
+        <p> stART short for street art - is an online hub for all things murals and graffiti in Austin, Texas. <br> 
+        <br> A virtual place where artists, Austinites, tourists, and art enthusiasts alike can upload 
+                  their favorite arts for all to see and admire.
+        </p>
     </div>
   </div>
-  <div class="row">
-    <div class="col s12 l6 ">
-      <img
-        src="/static/main_app/images/webelong.jpg"
-        alt="about Start-Meet-The-Team"
-        class="responsive-img materialboxed"
-      />
-    </div>
-    <div class="col s12 l4 offset-l1">
-      <h5 class="blue-text text-darken-4"><b>Meet Our Team</b></h5>
-      <p>
-       Technical Skills  
-      </p>
-    </div>
-  </div>
-</section>
-<!-- parallax -->
-<div class="parallax-container">
-<div class="parallax">
-  <img src="/static/main_app/images/greetings.jpg" alt="" class="responsive-img">
-</div>
-</div>
+</section>  
 {% endblock %}
+  
