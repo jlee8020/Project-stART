@@ -18,6 +18,7 @@
     <p>Artist: {{ oneArt.artist }}</p>
     <p>Description: {{ oneArt.description }}</p>
     <p>Added by: {{oneArt.user.first_name}} {{oneArt.user.last_name}}</p>
+    <p>Art is still present: {{oneArt.present}}</p>
   </div>
   <div class="card-action">
     {% if user == oneArt.user %}

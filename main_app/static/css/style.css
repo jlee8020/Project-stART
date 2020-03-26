@@ -88,3 +88,6 @@ body {
   padding: 5px;
 }
 
+#id_present {
+  display: inline-block;
+}
