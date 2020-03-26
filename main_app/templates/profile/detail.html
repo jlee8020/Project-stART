@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
-
-{% if request.user.profile.profilephoto %}
 <div class="row">
+  <div class="col s12 card-content">
+    <div>Welcome<h5>{{ user.first_name }} {{user.last_name}}</h5></div>
+  </div>
+  {% if request.user.profile.profilephoto %}
   <ul class="collection with-header">
-    <li class="col s12 collection-header">
-      <div class="card">
+    <li class="collection-header">
+      <div class="card z-depth-3">
         <div class="card-content">
           <img class="circle responsive-img"  id="img-details" src="{{request.user.profile.profilephoto.url}}" />
         </div>
@@ -13,52 +15,46 @@
           <a href="{% url 'delete_profile_photo' %}">Delete Photo</a> 
         </div>  
       </div>
-      <div class="card-content grey lighten-4">
-        <div>Welcome</div>
-        <div><h5>{{ user.first_name }} {{user.last_name}}</h5></div>
-      </div>
     </li>
-    <br>
-    <li class="collection-item"><b>Username:</b> &nbsp {{ user.username }} </li>
-    <li class="collection-item"><b>Email:   </b> &nbsp {{ user.email }}</li>
-    <li class="collection-item"><b>Phone number:</b> &nbsp {{user.profile.phone}}</li>
-    <li class="collection-item">
-      <b>Update Phone:</b>
-      <form  action="{% url 'update_profile' %}" method="post">
-        <div class="input-field col s6">
+  </ul>
+{% else %}
+  <ul class="col s12 collection with-header">
+    <div class="col s12 l4 responsive-img card-panel teal-text center-align">
+     No Profile Uploaded
+    <div>
+      <form class="row"
+        action="{% url 'add_profile_photo' %}" enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        <input type="file" name="photo-file" />
+          <br /><br />
+            <button class="btn waves-effect waves-light blue" type="submit" value="Upload Profile Photo" name="action">Upload Profile Photo
+            <i class="material-icons left">add_a_photo</i>
+      </form>
+  </ul>
+{% endif %}
+  <ul class="col s12 collection with-header">
+    <li class="collection-header">
+      <div class="card-content">
+        <li class="collection-item"><b>Username:</b> &nbsp {{ user.username }} </li>
+        <li class="collection-item"><b>Email:   </b> &nbsp {{ user.email }}</li>
+        <li class="collection-item"><b>Phone number:</b> &nbsp {{user.profile.phone}}</li>
+        <li class="collection-item">
+        <b>Update Phone:</b>
+          <form  action="{% url 'update_profile' %}" method="post">
+           <div class="input-field col s6">
               {% csrf_token %}
               <p>Only US phone numbers are accepted (format: +15125551234)</p>
               {{ profile_form.as_p }}
               <button  placeholder="this format: +15125551234" type="submit" class="btn waves-effect waves-light pink" value="Change">Update
               <i class="material-icons right">phone_iphone</i>
               </button>
-    </form>
-  </li>
+            </div>
+          </form>
+        </li>
   </ul>
 </div>
-{% else %}
-<div class="col s12 l4 responsive-img card-panel teal-text center-align">No Profile Uploaded
-<div>
-  <form
-  class="row"
-  action="{% url 'add_profile_photo' %}"
-  enctype="multipart/form-data"
-  method="POST"
-  >
-  {% csrf_token %}
-  <br>
-  <input type="file" name="photo-file" />
-  <br /><br /><br />
-  <button class="btn waves-effect waves-light blue" type="submit" value="Upload Profile Photo" name="action">Upload Profile Photo
-    <i class="material-icons left">add_a_photo</i>
-  </form>
-  </div>
-</div>
-</div>
-{% endif %}
     
-    </div>
-</div>
+
 
 
 {% endblock %}
