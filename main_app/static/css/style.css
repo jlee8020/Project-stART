@@ -1,3 +1,20 @@
+header{
+  background: url(/static/main_app/images/austin.jpg);
+  background-size: cover;
+  background-position: center;
+  min-height: 400px;
+}
+.section{
+  padding-top: 4vw;
+  padding-bottom: 4vw;
+}
+@media screen and (max-width: 470px){
+  header{
+    min-height:300px;
+    min-width: 500px;
+  }
+}
+
 body {
     display: flex;
     min-height: 100vh;

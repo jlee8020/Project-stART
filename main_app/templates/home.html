@@ -7,48 +7,48 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-   <!-- Compiled and minified CSS -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>stART Homepage</title>
-   <style>
-    body {
-      display: flex;
-      min-height: 100vh;
-      flex-direction: column;
-      background: url(/static/main_app/images/home_background1.jpg);
-      background-size: cover;
-      background-position: center;
-    }
 
-    main {
-      min-height: 400px;
-      flex: 1 0 auto;
-     }
-
-    .main-text {
-      color: white;
-      position: center;
-     }
-
-    .section{
-      padding-top: 4vw;
-      padding-bottom: 4vw;
-    }
-    
-    @media screen and (max-width: 470px){
-      header{
-        min-height:300px;
-        min-width: 500px;
+    <style>
+      .home-body {
+        display: flex;
+        flex-direction: column;
+        background: url(/static/main_app/images/home_background1.jpg);
+        background-size: cover;
+        background-position: center;
       }
-    }
 
-    #logo {
-      margin: 30px;
-    }
-   </style>
+      .main-text {
+        color: white;
+        position: center;
+      }
+
+      @media screen and (max-width: 470px){
+        header{
+          min-height:300px;
+          min-width: 500px;
+        }
+      }
+
+      #home-main {
+        height: 0;
+        padding-bottom: 56.25%;
+        position: relative;
+      }
+
+      #logo {
+        position: absolute;
+        top: 0; left: 0;
+        margin: 5%;
+        width: 80%;
+        height: auto;
+      }
+    </style>
   </head>
-  <body>
+  <body class="home-body">
     <!-- <div class="navbar-fixed"> -->
     <nav class="nav-wrapper light-blue darken-1">
       <div class="container">
@@ -81,7 +81,7 @@
       </nav>
 
     <main class="container" id="home-main">
-      <img class="brand-logo" id="logo" src="/static/main_app/images/logo_large.png" alt="logo" height="150">
+      <img class="brand-logo" id="logo" src="/static/main_app/images/home_logo.png" alt="logo" height="150">
       {% comment %} <p class="main-text"> an online community for sharing street art</p> {% endcomment %}
     </main>
 
