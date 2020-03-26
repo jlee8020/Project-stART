@@ -58,7 +58,13 @@
       <tbody>
         {% for comment in oneArt.comment_set.all %}
           <tr>
-            <td><img style="object-fit: cover; height: 60px; width: 60px;" class="circle" src="{{comment.user.profile.profilephoto.url}}" /></td>
+            <td>
+              {% if comment.user.profile.profilephoto %}
+                <img style="object-fit: cover; height: 60px; width: 60px;" class="circle" src="{{comment.user.profile.profilephoto.url}}" />
+              {% else %}
+                <img style="object-fit: cover; height: 60px; width: 60px;" class="circle" src="/static/main_app/images/defaultProfile.png" />
+              {% endif %}
+            </td>
             <td>{{comment.user.first_name}} {{comment.user.last_name}}</td>
             <td>{{comment.content}}</td>
             <td>{{comment.date}}</td>
