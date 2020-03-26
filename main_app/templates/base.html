@@ -13,7 +13,7 @@
     <title>stART Base</title>
    <style>
      header{
-       background: url(/static/main_app/images/austin.png);
+       background: url(/static/main_app/images/austin.jpg);
        background-size: cover;
        background-position: center;
        min-height: 400px;
@@ -35,9 +35,9 @@
     </header>
 
       <!-- <div class="navbar-fixed"> -->
-        <nav class="nav-wrapper yellow accent-1">
+        <nav class="nav-wrapper light-blue darken-1">
          <div class="container">
-           <img class="brand-logo" src="/static/main_app/images/logo.PNG" alt="logo" height="60">
+           <img class="brand-logo" id="logo" src="/static/main_app/images/logo_small.png" alt="logo" height="60">
            <!-- mobile menu -->
           <a href="#" class="sidenav-trigger" data-target="mobile-links">
             <i class="material-icons">menu</i>
@@ -80,18 +80,13 @@
         {% endblock %}
     </div>
     </main>
-            <footer class="page-footer blue lighten-3">
+            <footer class="page-footer light-blue darken-1">
               <div class="container">
                 <div class="row">
-                  <div class="col s12 l6">
-                    <h5 class="black-text text-darken-2">About Us</h5>
-                    <p class="black-text">test....</p>
-                  </div>
+                  <a class="yellow-text text-lighten-2" href="{% url 'about' %}">About</a>
+                  <div class=" center-align blue-text text-darken-4">All Rights Reserved &copy; 2020 Buckets Of Fun, Inc &nbsp;</div>
                 </div>
               </div>
-            </div>
-            <div class="footer-copyright yellow accent-1">
-              <div class="container center-align blue-text text-darken-2">All Rights Reserved &copy; 2020 Buckets Of Fun, Inc &nbsp;</div>
             </div>
     </footer>
     <!-- Compiled and minified JavaScript -->
