@@ -19,11 +19,10 @@
         background: url(/static/main_app/images/home_background1.jpg);
         background-size: cover;
         background-position: center;
-        font-family: 'Playfair Display', serif;
       }
 
       .home-text {
-        font-family: 'Baloo 2', cursive;
+        font-family: 'Baloo 2', sans-serif;
         font-size: 20px;
         display: flex;
         color: white;
@@ -32,7 +31,7 @@
       }
 
       #home-tagline {
-        font-family: 'Baloo 2', cursive;
+        font-family: 'Baloo 2', sans-serif;
         font-size: 25px;
         display: flex;
         color: white;
@@ -65,8 +64,8 @@
           <i class="material-icons">menu</i>
          </a>
           <ul class="right hide-on-small-and-down">
-            {% if user.is_authenticated %}
               <li><a class="blue-text text-darken-3" href="{% url 'art_index' %}">View All Art</a></li>
+            {% if user.is_authenticated %}
               <li><a class="pink-text text-accent-1"href="{% url 'logout' %}">Log Out</a></li>
             {% else %}
               <li><a class="pink-text text-accent-1" href="{% url 'signup' %}">Sign Up</a></li>
@@ -78,10 +77,11 @@
         <ul class="sidenav" id="mobile-links">
           <li><a class="blue-text text-darken-2" href="{% url 'home' %}">Home</a></li>
           <li><a class="blue-text text-darken-2" href="{% url 'about' %}">About</a></li>
-          <li><a class="blue-text text-darken-2" href="">View Profile</a></li>
+          <li><a class="blue-text text-darken-3" href="{% url 'art_index' %}">View All Art</a></li>
         {% if user.is_authenticated %}
-          <li><a class="blue-text text-darken-2" href="{% url 'art_create' %}">Add an Art</a></li>            <li><a class="blue-text text-darken-2" href="{% url 'art_index' %}">View All Arts</a></li>
-          <li><a class="pink-text text-accent-1"href="{% url 'logout' %}">Log Out</a></li>
+          <li><a class="blue-text text-darken-2" href="{% url 'art_create' %}">Add to Art</a></li>            <li><a class="blue-text text-darken-2" href="{% url 'art_index' %}">View All Art</a></li>
+          <li><a class="blue-text text-darken-2" href="">View Profile</a></li>
+          <li><a class="pink-text text-lighten-2"href="{% url 'logout' %}">Log Out</a></li>
         {% else %}
           <li><a class="pink-text text-accent-1" href="{% url 'signup' %}">Sign Up</a></li>
           <li><a class="pink-text text-accent-1" href="{% url 'login' %}">Log In</a></li>            {% endif %}
@@ -91,6 +91,8 @@
     <main class="" id="home-main">
       <img class="" id="home-logo" src="/static/main_app/images/home_logo.png" alt="logo">
         <div>
+          <br>
+          <br>
           <p class="home-text">stART is a platform for sharing photos of murals, graffiti, sculptures, installations, or any other public works of art you can find.</p>
           <p class="home-text" id="home-tagline">Start sharing today!</p>
         </div>
