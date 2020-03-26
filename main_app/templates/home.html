@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Baloo+2&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -19,34 +19,42 @@
         background: url(/static/main_app/images/home_background1.jpg);
         background-size: cover;
         background-position: center;
+        font-family: 'Playfair Display', serif;
       }
 
-      .main-text {
+      .home-text {
+        font-family: 'Baloo 2', cursive;
+        font-size: 20px;
+        display: flex;
+        color: white;
+        position: center;
+        margin: 3%;
+      }
+
+      #home-tagline {
+        font-family: 'Baloo 2', cursive;
+        font-size: 25px;
+        display: flex;
         color: white;
         position: center;
       }
 
-      @media screen and (max-width: 470px){
-        header{
-          min-height:300px;
-          min-width: 500px;
-        }
-      }
-
       #home-main {
+        display: block;
         height: 0;
         padding-bottom: 56.25%;
-        position: relative;
+        width: 70%;
+        margin: 5%;
       }
 
-      #logo {
-        position: absolute;
+      #home-logo {
+        position: relative;
         top: 0; left: 0;
-        margin: 5%;
-        width: 80%;
+        width: 105%;
         height: auto;
       }
     </style>
+    
   </head>
   <body class="home-body">
     <!-- <div class="navbar-fixed"> -->
@@ -80,9 +88,12 @@
         </ul>
       </nav>
 
-    <main class="container" id="home-main">
-      <img class="brand-logo" id="logo" src="/static/main_app/images/home_logo.png" alt="logo" height="150">
-      {% comment %} <p class="main-text"> an online community for sharing street art</p> {% endcomment %}
+    <main class="" id="home-main">
+      <img class="" id="home-logo" src="/static/main_app/images/home_logo.png" alt="logo">
+        <div>
+          <p class="home-text">stART is a platform for sharing photos of murals, graffiti, sculptures, installations, or any other public works of art you can find.</p>
+          <p class="home-text" id="home-tagline">Start sharing today!</p>
+        </div>
     </main>
 
     <footer class="page-footer light-blue darken-1">
