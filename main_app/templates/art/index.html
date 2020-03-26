@@ -5,14 +5,14 @@
 <!-- <div class="flex-container"> -->
 <div class="card">
     <div class="card-image">
-      {% for photo in oneArt.photo_set.all %}
-      <img id="img-height" class="responsive-img" src="{{photo.url}}" />
+      {% if oneArt.photo_set.all.first %}
+      <img id="img-height" class="responsive-img" src="{{oneArt.photo_set.all.first.url}}" />
       <a href="#" class="btn-floating halfway-fab waves-effect waves-light pink">
         <i class="material-icons">favorite</i>
       </a>
-      {% empty %}
+      {% else %}
       <div class="card-panel teal-text center-align">No Photos Uploaded</div>
-      {% endfor %}
+      {% endif%}
       </div>
           <div class="card-content">
             <span class="blue-text text-darken-2 card-title">{{ oneArt.name }}</span>
