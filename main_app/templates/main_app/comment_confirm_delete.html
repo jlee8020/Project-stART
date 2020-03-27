@@ -5,16 +5,19 @@
   <ul class="collection with-header">
     <li class="collection-header">
       <li class="center-align collection-header"><h4>Delete Comment</h4></li>
-  <div><h5 class="text-center">Are you sure you want to delete this comment?<span class="teal-text">{{ comment.body }}</span>?</h5></div>
+        <div>
+          <h5 class="text-center">Are you sure you want to delete this comment?<span class="teal-text">{{ comment.body }}</span>?</h5>
+        </div>
+      </li>
     </li>
   </ul>
-    <div class="center-align">
-      <form id="newPost" action="" method="POST">
-        {% csrf_token %}
-        <button class="btn waves-effect waves-light pink lighten-2" type="submit" value="Yes - Delete!"  name="action">Yes - Delete
-          <i class="material-icons left">delete_forever</i>
-      </form>
-    </div>
+  <div class="center-align">
+    <form id="newPost" action="" method="POST">
+      {% csrf_token %}
+      <button class="btn waves-effect waves-light pink lighten-2" type="submit" value="Yes - Delete!"  name="action">Yes - Delete
+        <i class="material-icons left">delete_forever</i>
+    </form>
+  </div>
 </div>
 
 {% endblock %}

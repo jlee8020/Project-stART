@@ -3,84 +3,88 @@
 <!-- <h1>Art Details</h1> -->
 <div class="container">
   <div class="card-content">
-      {% for photo in oneArt.photo_set.all %}
+    {% for photo in oneArt.photo_set.all %}
       <img id="img-details" class="responsive-img card-panel" src="{{photo.url}}" />
-      {% if user == oneArt.user %}
-      <a class="btn waves-effect waves-light pink lighten-2" href="{% url 'delete_photo' oneArt.id photo.id %}" value="delete">Delete Photo<i class="material-icons left">delete_forever</i></a>
+      <!-- if the user uploaded the photo or the user created the art page they can delete the photo, but no other users can. -->
+      {% if user == photo.user or user == art.user %}
+        <a class="btn waves-effect waves-light pink lighten-2" href="{% url 'delete_photo' oneArt.id photo.id %}" value="delete">Delete Photo<i class="material-icons left">delete_forever</i></a>
       {% endif %}
       {% empty %}
-      <div class="card-content">
-        <div class="card-panel teal-text center-align">No Photos Uploaded</div>
-      </div>
+        <div class="card-content">
+          <div class="card-panel teal-text center-align">No Photos Uploaded</div>
+        </div>
       {% endfor %}
       <div class="col s12 l6">
-          <form
-            action="{% url 'add_photo' oneArt.id %}"
-            enctype="multipart/form-data"
-            method="POST"
-            class="card-panel"
-          >
-            {% csrf_token %}
-            <input type="file" name="photo-file" />
-            <br /><br />
-            <button class="btn waves-effect waves-light blue" type="submit" value="Upload Photo" name="action">Upload Photo
+        <form
+          action="{% url 'add_photo' oneArt.id %}"
+          enctype="multipart/form-data"
+          method="POST"
+          class="card-panel"
+        >
+          {% csrf_token %}
+          <input type="file" name="photo-file" />
+          <br /><br />
+          <button class="btn waves-effect waves-light blue" type="submit" value="Upload Photo" name="action">Upload Photo
               <i class="material-icons left">add_a_photo</i>
-          </form>
+        </form>
       </div>
-        <ul class="collection">
-          <li class="collection-header">{{ oneArt.name }}</li>
-          <li class="collection-item">Artist: {{ oneArt.artist }}</li>
-          <li class="collection-item">Description: {{ oneArt.description }}</li>
-          <li class="collection-item">Added by: {{oneArt.user.first_name}} {{oneArt.user.last_name}}</li>
-          <li class="collection-item">Art is still present: {{oneArt.present}}</li>
-          {% if user == oneArt.user %}
-        </ul>  
-    <a class="btn waves-effect waves-light cyan lighten-1" href="{% url 'art_owner_update' oneArt.id %}" value="Edit">Edit<i class="material-icons left">edit</i></a>
-    <a class="btn waves-effect waves-light pink lighten-2" href="{% url 'art_delete' oneArt.id %}" value="delete">Delete Art<i class="material-icons left">delete_forever</i></a>
-   {% else %}
-   <a class="btn waves-effect waves-light cyan lighten-1" href="{% url 'art_update' oneArt.id %}" value="Edit">Edit<i class="material-icons left">edit</i></a>
-   {% endif %}
+      <ul class="collection">
+        <li class="collection-header">{{ oneArt.name }}</li>
+        <li class="collection-item">Artist: {{ oneArt.artist }}</li>
+        <li class="collection-item">Description: {{ oneArt.description }}</li>
+        <li class="collection-item">Added by: {{oneArt.user.first_name}} {{oneArt.user.last_name}}</li>
+        <li class="collection-item">Art is still present: {{oneArt.present}}</li>
+      </ul>
+      <!-- If user viewing the page started the page, give them ability to delete it along with fully edit the art details. If not let them edit a limited set of art details. -->
+      {% if user == oneArt.user %}
+        <a class="btn waves-effect waves-light cyan lighten-1" href="{% url 'art_owner_update' oneArt.id %}" value="Edit">Edit<i class="material-icons left">edit</i></a>
+        <a class="btn waves-effect waves-light pink lighten-2" href="{% url 'art_delete' oneArt.id %}" value="delete">Delete Art<i class="material-icons left">delete_forever</i></a>
+      {% else %}
+        <a class="btn waves-effect waves-light cyan lighten-1" href="{% url 'art_update' oneArt.id %}" value="Edit">Edit<i class="material-icons left">edit</i></a>
+      {% endif %}
 <!-- Comments Form -->
       <div class="col s12 l6">
-          <form action="{% url 'add_comment' oneArt.id %}" method="post">
-            {% csrf_token %}
-            {{ comment_form.as_p }}
-            <button class="btn waves-effect waves-light cyan lighten-1" type="submit" value="Add Comment" name="action">Add Comment
-              <i class="material-icons left">add_circle</i>
-            </button>
-          </form> 
+        <form action="{% url 'add_comment' oneArt.id %}" method="post">
+          {% csrf_token %}
+          {{ comment_form.as_p }}
+          <button class="btn waves-effect waves-light cyan lighten-1" type="submit" value="Add Comment" name="action">Add Comment
+            <i class="material-icons left">add_circle</i>
+          </button>
+        </form> 
       </div>
   </div>
 </div>
-  <!-- Comments List -->
-  <div class="container">
-    <table class="striped">
-      <thead>
-        <tr><th>Profile Photo</th><th>User</th><th>Comment</th><th>Date</th><th>Delete</th></tr>
-      </thead>
-      <tbody>
-        {% for comment in oneArt.comment_set.all %}
-          <tr>
-            <td>
-              {% if comment.user.profile.profilephoto %}
-                <img style="object-fit: cover; height: 60px; width: 60px;" class="circle" src="{{comment.user.profile.profilephoto.url}}" />
-              {% else %}
-                <img style="object-fit: cover; height: 60px; width: 60px;" class="circle" src="/static/main_app/images/defaultProfile.png" />
-              {% endif %}
-            </td>
-            <td>{{comment.user.first_name}} {{comment.user.last_name}}</td>
-            <td>{{comment.content}}</td>
-            <td>{{comment.date}}</td>
-            {% if user == comment.user %}
-              <td><a class="btn waves-effect waves-light pink lighten-2" href="{% url 'comment_delete' comment.id %}"><i class="material-icons">delete_forever</i></a></td>
-            {% else%}
-              <td></td>
+<!-- Comments -->
+{% if oneArt.comment_set.all %}
+<div class="container">
+  <table class="striped">
+    <thead>
+      <tr><th>Profile Photo</th><th>User</th><th>Comment</th><th>Date</th><th>Delete</th></tr>
+    </thead>
+    <tbody>
+      {% for comment in oneArt.comment_set.all %}
+        <tr>
+          <td>
+            {% if comment.user.profile.profilephoto %}
+              <img style="object-fit: cover; height: 60px; width: 60px;" class="circle" src="{{comment.user.profile.profilephoto.url}}" />
+            {% else %}
+              <img style="object-fit: cover; height: 60px; width: 60px;" class="circle" src="/static/main_app/images/defaultProfile.png" />
             {% endif %}
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-  </div>
+          </td>
+          <td>{{comment.user.first_name}} {{comment.user.last_name}}</td>
+          <td>{{comment.content}}</td>
+          <td>{{comment.date}}</td>
+          {% if user == comment.user %}
+            <td><a class="btn waves-effect waves-light pink lighten-2" href="{% url 'comment_delete' comment.id %}"><i class="material-icons">delete_forever</i></a></td>
+          {% else%}
+            <td></td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+{% endif %}
 {% endblock %}
 
             

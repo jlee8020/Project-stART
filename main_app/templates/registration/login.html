@@ -3,16 +3,14 @@
 
 <div>
   <h3>Log into stART</h3>
-
-<form method="post" action="{% url 'login' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button class="btn waves-effect waves-light pink lighten-2" type="submit" value="login" name="action">login
-    <input type="hidden" name="next" value="{{ next }}">
-    <i class="material-icons right">send</i>
-  </button>
-</form>
-<br>
+  <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn waves-effect waves-light pink lighten-2" type="submit" value="login" name="action">login
+      <input type="hidden" name="next" value="{{ next }}">
+      <i class="material-icons right">send</i>
+    </button>
+  </form><br>
 </div>
 {% endblock %}
 

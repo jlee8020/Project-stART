@@ -1,27 +1,27 @@
 {% extends 'base.html' %}
 {% block content %}
  
-   <!-- Leaving the action empty makes the form post to the same url used to display it -->
-  <div class="container">
-    <ul class="collection with-header">
-      <li class="collection-header">
-        <li class="center-align collection-header"><h4>Add an Art</h4></li>
-          <form action="" method="post">
-            <!-- Django requires the following for security purposes -->
-            {% csrf_token %}
-            <table>
-              <!-- Render the inputs inside of <tr>s & <td>s -->
-              {{ form.as_table }}
-            </table>
-          </li>
-        </ul>
+<!-- Leaving the action empty makes the form post to the same url used to display it -->
+<div class="container">
+  <ul class="collection with-header">
+    <li class="collection-header">
+      <li class="center-align collection-header"><h4>Add an Art</h4></li>
+        <form action="" method="post">
+          {% csrf_token %}
+          <table>
+            {{ form.as_table }}
+          </table>
           <div class="container">
             <div class="center-align">
               <button class="btn waves-effect waves-light cyan lighten-1" type="submit" value="Submit!" name="action">SUBMIT
                 <i class="material-icons right">send</i>
+              </button>
             </div>
           </div>
         </form>
-  </div>
+      </li>
+    </li>
+  </ul>
+</div>
   
 {% endblock %}
