@@ -10,88 +10,53 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>stART Homepage</title>
-
-    <style>
-      .home-body {
-        display: flex;
-        flex-direction: column;
-        background: url(/static/main_app/images/home_background1.jpg);
-        background-size: cover;
-        background-position: center;
-      }
-
-      .home-text {
-        font-family: 'Baloo 2', sans-serif;
-        font-size: 20px;
-        display: flex;
-        color: white;
-        position: center;
-        margin: 3%;
-      }
-
-      #home-tagline {
-        font-family: 'Baloo 2', sans-serif;
-        font-size: 25px;
-        display: flex;
-        color: white;
-        position: center;
-      }
-
-      #home-main {
-        display: block;
-        height: 0;
-        padding-bottom: 56.25%;
-        width: 70%;
-        margin: 5%;
-      }
-    </style>  
   </head>
   <body class="home-body">
     <nav class="nav-wrapper light-blue darken-1">
       <div class="container">
         <a href="#" class="sidenav-trigger" data-target="mobile-links">
           <i class="material-icons">menu</i>
-         </a>
-          <ul class="right hide-on-small-and-down">
-            <li><a class="white-text" href="{% url 'home' %}">Home</a></li>
-            <li><a class="white-text" href="{% url 'about' %}">About</a></li>
-            <li><a class="white-text" href="{% url 'art_index' %}">View All Art</a></li>
-            {% if user.is_authenticated %}
-              <li><a class="pink-text text-accent-1"href="{% url 'logout' %}">Log Out</a></li>
-            {% else %}
-              <li><a class="pink-text text-accent-1" href="{% url 'signup' %}">Sign Up</a></li>&nbsp &nbsp;;
-              <li><a class="pink-text text-accent-1" href="{% url 'login' %}">Log In</a></li>
-              {% endif %}
-          </ul>
-        </div>
-        <ul class="sidenav" id="mobile-links">
-          <li><a class="blue-text text-darken-2" href="{% url 'home' %}">Home</a></li>
-          <li><a class="blue-text text-darken-2" href="{% url 'about' %}">About</a></li>
-          <li><a class="blue-text text-darken-3" href="{% url 'art_index' %}">View All Art</a></li>
+        </a>
+        <ul class="right hide-on-small-and-down">
+          <li><a class="white-text" href="{% url 'home' %}">Home</a></li>
+          <li><a class="white-text" href="{% url 'about' %}">About</a></li>
+          <li><a class="white-text" href="{% url 'art_index' %}">View All Art</a></li>
+          {% if user.is_authenticated %}
+            <li><a class="pink-text text-accent-1"href="{% url 'logout' %}">Log Out</a></li>
+          {% else %}
+            <li><a class="pink-text text-accent-1" href="{% url 'signup' %}">Sign Up</a></li>&nbsp &nbsp;
+            <li><a class="pink-text text-accent-1" href="{% url 'login' %}">Log In</a></li>
+          {% endif %}
+        </ul>
+      </div>
+      <ul class="sidenav" id="mobile-links">
+        <li><a class="blue-text text-darken-2" href="{% url 'home' %}">Home</a></li>
+        <li><a class="blue-text text-darken-2" href="{% url 'about' %}">About</a></li>          <li><a class="blue-text text-darken-3" href="{% url 'art_index' %}">View All Art</a></li>
         {% if user.is_authenticated %}
-          <li><a class="blue-text text-darken-2" href="{% url 'art_create' %}">Add to Art</a></li>            <li><a class="blue-text text-darken-2" href="{% url 'art_index' %}">View All Art</a></li>
+          <li><a class="blue-text text-darken-2" href="{% url 'art_create' %}">Add to Art</a></li>
+          <li><a class="blue-text text-darken-2" href="{% url 'art_index' %}">View All Art</a></li>
           <li><a class="blue-text text-darken-2" href="">View Profile</a></li>
           <li><a class="pink-text text-lighten-2"href="{% url 'logout' %}">Log Out</a></li>
         {% else %}
           <li><a class="pink-text text-accent-1" href="{% url 'signup' %}">Sign Up</a></li>
-          <li><a class="pink-text text-accent-1" href="{% url 'login' %}">Log In</a></li>            {% endif %}
-        </ul>
-      </nav>
-      <main>
-        <div class="row">
+          <li><a class="pink-text text-accent-1" href="{% url 'login' %}">Log In</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+    <main>
+      <div class="row">
         <div class="container col6">
-        <div class="pop-up">
-          <div class="pop-up-container">
-            <img class="responsive-img" id="home-logo" src="/static/main_app/images/home_logo-sm.png" alt="logo">
-            <h5 class="center-align white-text">A platform for sharing photos of murals, graffiti, or any other arts you see on the streets of Austin.</h5>
-            <h4 class="center-align white-text">Start sharing today!</h4>
-            <a class="btn waves-effect waves-light cyan lighten-1 white-text" href="{% url 'login' %}">Log In</a>
-            <a class="btn waves-effect waves-light cyan lighten-1 white-text" href="{% url 'signup' %}">Sign Up</a>
+          <div class="pop-up">
+            <div class="pop-up-container">
+              <img class="responsive-img" id="home-logo" src="/static/main_app/images/home_logo-sm.png" alt="logo">
+              <h5 class="center-align white-text">A platform for sharing photos of murals, graffiti, or any other arts you see on the streets of Austin.</h5>
+              <h4 class="center-align white-text">Start sharing today!</h4>
+              <a class="btn waves-effect waves-light cyan lighten-1 white-text" href="{% url 'login' %}">Log In</a>
+              <a class="btn waves-effect waves-light cyan lighten-1 white-text" href="{% url 'signup' %}">Sign Up</a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
     </main>
     <footer class="page-footer light-blue darken-1">
       <div class="container">
