@@ -46,14 +46,13 @@
         margin: 5%;
       }
 
-      #home-logo {
+      /* #home-logo {
         position: relative;
         top: 0; left: 0;
         width: 105%;
         height: auto;
-      }
-    </style>
-    
+      } */
+    </style>  
   </head>
   <body class="home-body">
     <!-- <div class="navbar-fixed"> -->
@@ -88,21 +87,35 @@
         </ul>
       </nav>
 
-    <main class="" id="home-main">
-      <img class="" id="home-logo" src="/static/main_app/images/home_logo.png" alt="logo">
-        <div>
-          <br>
-          <br>
-          <p class="home-text">stART is a platform for sharing photos of murals, graffiti, sculptures, installations, or any other public works of art you can find.</p>
-          <p class="home-text" id="home-tagline">Start sharing today!</p>
+      <!-- <div id="pop-up">
+        <img src="img/ninja.png">
+        <div class="container">
+          <h1>Kung Foo Your Skills</h1>
+          <p>Join the mailing list to be spammed with useless ninja tips</p>
+          <button>Hii Ya</button>
+          <div class="cross">x</div>
         </div>
-    </main>
+      </div> -->
+      <main>
+        <div class="row">
+        <div class="container col6">
+        <div class="pop-up">
+          <div class="pop-up-container">
+            <img class="responsive-img" id="home-logo" src="/static/main_app/images/home_logo-sm.png" alt="logo">
+            <h5 class="center-align white-text">A platform for sharing photos of murals, graffiti, or any other arts you see on the streets of Austin.</h5>
+            <h4 class="center-align white-text">Start sharing today!</h4>
+            <a class="btn waves-effect waves-light pink lighten-1 white-text" href="{% url 'login' %}">Log In</a>
+            <a class="btn waves-effect waves-light pink lighten-1 white-text" href="{% url 'signup' %}">Sign Up</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    </main>
     <footer class="page-footer light-blue darken-1">
       <div class="container">
         <div class="row">
-          <a class="right blue-text text-darken-3" href="{% url 'about' %}">About</a>
-          <div class=" center-align light-blue-text text-lighten-2">All Rights Reserved &copy; 2020 Buckets Of Fun, Inc &nbsp;</div>
+          <div class=" center-align white-text">All Rights Reserved &copy; 2020 Buckets Of Fun, Inc &nbsp;</div>
         </div>
       </div>
     </footer>
