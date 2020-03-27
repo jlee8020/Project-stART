@@ -1,8 +1,16 @@
 # stART
-
+Street Art photo sharing Django app
 stART is a platform for sharing photos of murals, graffiti, sculptures, installations, or any other public works of art you can find.
 
----
+
+# Mission Statement
+- To provide an online hub for all to post, search, and showcase our very
+    own street arts in Austin, such as murals and graffitis, because we
+    believe in keeping Austin colorful and fun!
+
+# Motivation 
+- Love of Art. A platform for all things murals, graffittis and arts! 
+
 
 # Links ⛓
 
@@ -15,6 +23,11 @@ stART is a platform for sharing photos of murals, graffiti, sculptures, installa
 ---
 
 # Developer Ah-ha Moments 💡
+- "Everything I thought was going to be hard wasn’t that bad and everything I thought was going to be easy was more difficult." Brandon Carter
+
+- "I learned I much prefer postgresql to mongodb, And I don't really like when django tries doing things for me" David Stinson
+  
+- "It's not so much as to how I want the app to look, a great product made by collaboration is more important than what I want." Jan Lee
 
 ---
 
@@ -42,7 +55,8 @@ stART is a platform for sharing photos of murals, graffiti, sculptures, installa
 
 # User Stories 👩‍💻👨‍💻
 
----
+- Mystica is a curious traveler from the far away Neverland. She heard about Austin's SXSW and headed there to experience the festivities. When Mystica landed at the airport news of SXSW being cancelled greeted her... Oh no! She frantically searched the internet for fun things to do in Austin. According to Google she could 1. Get wasted on dirty six, 2. Try several breweries in East Austin or 3. download stART app and visit all the great arts in Austin. Well, Mystica was looking forward to a memorable experience in Austin plus she has allergic reaction to alcohol, so stART saves her day!!
+- 
 
 # Technologies Used 💾
 
@@ -65,6 +79,7 @@ stART is a platform for sharing photos of murals, graffiti, sculptures, installa
 # Credits 🙌
 
 - stART uses the Baloo 2 font designed by Ek Type. Found at: [Google Fonts](https://fonts.google.com/specimen/Baloo+2).
+- Net Ninja Shaun for his awesome youtube tutorials!
 
 ---
 
@@ -85,6 +100,7 @@ A minimum viable product will let a logged in user add art, edit or delete added
 - [x]  Delete Comments from art
 - [x]  Extend User model to capture phone information, along with first and last name
 - [x]  Comments show first and last name of the user that added that comment
+- [x]  Mobile Responsiveness
 - [ ]  Images should be compressed when they are uploaded. The original high quality version could be retained for completeness, but users would typically see the compressed image to improve the typical user experience.
 - [ ]  View an individual user's contributions on their user page
 - [ ]  Add 2nd factor authentication

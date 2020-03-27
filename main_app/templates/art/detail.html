@@ -1,58 +1,59 @@
 {% extends 'base.html' %} 
 {% block content %}
-<h1>Art Details</h1>
-<div class="col s12 l4 card-details">
+<!-- <h1>Art Details</h1> -->
+<div class="container">
   <div class="card-content">
-    {% for photo in oneArt.photo_set.all %}
-    <section>
-    <img id="img-details" class="responsive-img card-panel" src="{{photo.url}}" />
-    {% if user == oneArt.user %}
-    <a href="{% url 'delete_photo' oneArt.id photo.id %}">Delete Photo</a>
-    {% endif %}
-    {% empty %}
-    </section>
-    <div class="card-panel teal-text center-align">No Photos Uploaded</div>
-    {% endfor %}
-    <div>
-    <span class="card-title">{{ oneArt.name }}</span>
-    <p>Artist: {{ oneArt.artist }}</p>
-    <p>Description: {{ oneArt.description }}</p>
-    <p>Added by: {{oneArt.user.first_name}} {{oneArt.user.last_name}}</p>
-    <p>Art is still present: {{oneArt.present}}</p>
-  </div>
-  <div class="card-action">
-    {% if user == oneArt.user %}
-      <a class="btn waves-effect waves-light cyan lighten-1" href="{% url 'art_owner_update' oneArt.id %}" value="Edit">Edit<i class="material-icons left">edit</i></a>
-      <a class="btn waves-effect waves-light pink lighten-2" href="{% url 'art_delete' oneArt.id %}" value="delete">Delete Art<i class="material-icons left">delete_forever</i></a>
-    {% else %}
-      <a class="btn waves-effect waves-light cyan lighten-1" href="{% url 'art_update' oneArt.id %}" value="Edit">Edit<i class="material-icons left">edit</i></a>
-    {% endif %}
-  </div>
-  <div class="col s12 l6">
-  <form
-    action="{% url 'add_photo' oneArt.id %}"
-    enctype="multipart/form-data"
-    method="POST"
-    class="card-panel"
-  >
-    {% csrf_token %}
-    <input type="file" name="photo-file" />
-    <br /><br />
-    <button class="btn waves-effect waves-light blue" type="submit" value="Upload Photo" name="action">Upload Photo
-      <i class="material-icons left">add_a_photo</i>
-  </form>
-</div>
-</div>
-</div>
+      {% for photo in oneArt.photo_set.all %}
+      <img id="img-details" class="responsive-img card-panel" src="{{photo.url}}" />
+      {% if user == oneArt.user %}
+      <a href="{% url 'delete_photo' oneArt.id photo.id %}">Delete Photo</a>
+      {% endif %}
+      {% empty %}
+      <div class="card-content">
+        <div class="card-panel teal-text center-align">No Photos Uploaded</div>
+      </div>
+      {% endfor %}
+      <div class="col s12 l6">
+          <form
+            action="{% url 'add_photo' oneArt.id %}"
+            enctype="multipart/form-data"
+            method="POST"
+            class="card-panel"
+          >
+            {% csrf_token %}
+            <input type="file" name="photo-file" />
+            <br /><br />
+            <button class="btn waves-effect waves-light blue" type="submit" value="Upload Photo" name="action">Upload Photo
+              <i class="material-icons left">add_a_photo</i>
+          </form>
+      </div>
+        <ul class="collection">
+          <li class="collection-header">{{ oneArt.name }}</li>
+          <li class="collection-item">Artist: {{ oneArt.artist }}</li>
+          <li class="collection-item">Description: {{ oneArt.description }}</li>
+          <li class="collection-item">Added by: {{oneArt.user.first_name}} {{oneArt.user.last_name}}</li>
+          <li class="collection-item">Art is still present: {{oneArt.present}}</li>
+          {% if user == oneArt.user %}
+        </ul>  
+    <a class="btn waves-effect waves-light cyan lighten-1" href="{% url 'art_owner_update' oneArt.id %}" value="Edit">Edit<i class="material-icons left">edit</i></a>
+    <a class="btn waves-effect waves-light pink lighten-2" href="{% url 'art_delete' oneArt.id %}" value="delete">Delete Art<i class="material-icons left">delete_forever</i></a>
+   {% else %}
+   <a class="btn waves-effect waves-light cyan lighten-1" href="{% url 'art_update' oneArt.id %}" value="Edit">Edit<i class="material-icons left">edit</i></a>
+   {% endif %}
 <!-- Comments Form -->
-    <form action="{% url 'add_comment' oneArt.id %}" method="post">
-      {% csrf_token %}
-      {{ comment_form.as_p }}
-      <button class="btn waves-effect waves-light cyan lighten-1" type="submit" value="Add Comment" name="action">Add Comment
-        <i class="material-icons right">add_circle</i>
-      </button>
-    </form> 
+      <div class="col s12 l6">
+          <form action="{% url 'add_comment' oneArt.id %}" method="post">
+            {% csrf_token %}
+            {{ comment_form.as_p }}
+            <button class="btn waves-effect waves-light cyan lighten-1" type="submit" value="Add Comment" name="action">Add Comment
+              <i class="material-icons right">add_circle</i>
+            </button>
+          </form> 
+      </div>
+  </div>
+</div>
   <!-- Comments List -->
+  <div class="container">
     <table class="striped">
       <thead>
         <tr><th>Profile Photo</th><th>User</th><th>Comment</th><th>Date</th><th>Delete</th></tr>
@@ -80,8 +81,6 @@
         </tbody>
       </table>
   </div>
-</div>
-
 {% endblock %}
 
             
