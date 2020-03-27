@@ -22,10 +22,10 @@
   </div>
   <div class="card-action">
     {% if user == oneArt.user %}
-      <a class="btn waves-effect waves-light pink" href="{% url 'art_owner_update' oneArt.id %}" value="Edit">Edit<i class="material-icons left">edit</i></a>
-      <a class="btn waves-effect waves-light red" href="{% url 'art_delete' oneArt.id %}" value="delete">Delete Art<i class="material-icons left">delete_forever</i></a>
+      <a class="btn waves-effect waves-light cyan lighten-1" href="{% url 'art_owner_update' oneArt.id %}" value="Edit">Edit<i class="material-icons left">edit</i></a>
+      <a class="btn waves-effect waves-light pink lighten-2" href="{% url 'art_delete' oneArt.id %}" value="delete">Delete Art<i class="material-icons left">delete_forever</i></a>
     {% else %}
-      <a class="btn waves-effect waves-light pink" href="{% url 'art_update' oneArt.id %}" value="Edit">Edit<i class="material-icons left">edit</i></a>
+      <a class="btn waves-effect waves-light cyan lighten-1" href="{% url 'art_update' oneArt.id %}" value="Edit">Edit<i class="material-icons left">edit</i></a>
     {% endif %}
   </div>
   <div class="col s12 l6">
@@ -48,7 +48,7 @@
     <form action="{% url 'add_comment' oneArt.id %}" method="post">
       {% csrf_token %}
       {{ comment_form.as_p }}
-      <button class="btn waves-effect waves-light pink" type="submit" value="Add Comment" name="action">Add Comment
+      <button class="btn waves-effect waves-light cyan lighten-1" type="submit" value="Add Comment" name="action">Add Comment
         <i class="material-icons right">add_circle</i>
       </button>
     </form> 
@@ -71,7 +71,7 @@
             <td>{{comment.content}}</td>
             <td>{{comment.date}}</td>
             {% if user == comment.user %}
-              <td><a class="btn waves-effect waves-light red" href="{% url 'comment_delete' comment.id %}"><i class="material-icons">delete_forever</i></a></td>
+              <td><a class="btn waves-effect waves-light pink lighten-2" href="{% url 'comment_delete' comment.id %}"><i class="material-icons">delete_forever</i></a></td>
             {% else%}
               <td></td>
             {% endif %}

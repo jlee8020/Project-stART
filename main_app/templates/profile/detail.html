@@ -19,7 +19,7 @@
   </ul>
 {% else %}
   <ul class="col s12 collection with-header">
-    <div class="col s12 l4 responsive-img card-panel teal-text center-align">
+    <div class="col s12 l4 responsive-img card-panel cyan-text center-align">
      No Profile Uploaded
     <div>
       <form class="row"
@@ -45,7 +45,7 @@
               {% csrf_token %}
               <p>Only US phone numbers are accepted (format: +15125551234)</p>
               {{ profile_form.as_p }}
-              <button  placeholder="this format: +15125551234" type="submit" class="btn waves-effect waves-light pink" value="Change">Update
+              <button  placeholder="this format: +15125551234" type="submit" class="btn waves-effect waves-light cyan lighten-1" value="Change">Update
               <i class="material-icons right">phone_iphone</i>
               </button>
             </div>

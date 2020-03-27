@@ -8,7 +8,7 @@
 <form method="post" action="{% url 'signup' %}">
   {% csrf_token %}
   {{ sign_up_form.as_p }}
-  <button class="btn waves-effect waves-light pink" type="submit" name="action">signup
+  <button class="btn waves-effect waves-light pink lighten-2" type="submit" name="action">signup
   <i class="material-icons right">create</i>
   </button>
 </form>

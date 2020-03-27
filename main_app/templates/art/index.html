@@ -9,7 +9,7 @@
       <img id="img-height" class="responsive-img" src="{{oneArt.photo_set.all.first.url}}" />
       </a>
       {% else %}
-      <div class="card-panel teal-text center-align">No Photos Uploaded</div>
+      <div class="card-panel blue-text center-align">No Photos Uploaded</div>
       {% endif%}
       </div>
           <div class="card-content">
@@ -17,7 +17,7 @@
             <p>{{ oneArt.description }}</p>
           </div>
             <div class="card-action">
-            <a class="btn waves-effect waves-light pink" href="{% url 'art_detail' oneArt.id %}">Details</a>
+            <a class="btn waves-effect waves-light cyan lighten-1" href="{% url 'art_detail' oneArt.id %}">Details</a>
           </a>
             </div>
     </div>
