@@ -1,14 +1,16 @@
-#pre-footer{
+#pre-footer {
   background: url(/static/main_app/images/austin.jpg);
   background-size: cover;
   background-position: center;
   min-height: 220px;
 }
-.section{
+
+.section {
   padding-top: 4vw;
   padding-bottom: 4vw;
 }
-@media screen and (max-width: 470px){
+
+@media screen and (max-width: 470px) {
   header{
     min-height:300px;
     min-width: 500px;
@@ -16,55 +18,72 @@
 }
 
 body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 
-  }
+}
   
-  main {
-    flex: 1 0 auto;
-    display: flex;
-    flex-flow: row;
-    flex-wrap: wrap;
-  }
+main {
+  flex: 1 0 auto;
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+}
 
-  .main-content{
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-  }
+.main-content{
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
 
-  .card-details{
-    display: flex;
-    min-width: 500px;
-  }
-  .parallax{
-    position:static;
-  }
-  .profile-content{
-    display: flex;
-    min-inline-size: 800px;
-    flex-direction: row;
-  }
+.card-details{
+  display: flex;
+  min-width: 500px;
+}
+
+.parallax{
+  position:static;
+}
+
+.profile-content{
+  display: flex;
+  min-inline-size: 800px;
+  flex-direction: row;
+}
   
-    .card{
-    margin: 20px;
-    width: 25%;
-  }
-  nav{
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    background-color: rgba(31, 26, 9, 0.6);
-    margin: 0;
-    font-family: 'Baloo 2', sans-serif;
-    font-weight: bold;
-  }
-  footer.page-footer {
-    padding-top: 0;
-    text-align: right;
-  }
+.card{
+  margin: 20px;
+  width: 25%;
+}
+
+nav{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: rgba(31, 26, 9, 0.6);
+  margin: 0;
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: bold;
+}
+  
+p {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: small;
+}
+
+footer.page-footer {
+  padding-top: 0;
+  text-align: right;
+}
+
+#logo {
+  padding: 5px;
+}
+
+#id_present {
+  display: inline-block;
+}
 
 .swatch-yellow {
   background-color: #E8D36A;
@@ -84,12 +103,4 @@ body {
 
 .swatch-blue3 {
   background-color: #05C7F2;
-}
-
-#logo {
-  padding: 5px;
-}
-
-#id_present {
-  display: inline-block;
 }
