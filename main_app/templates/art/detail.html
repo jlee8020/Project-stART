@@ -4,9 +4,13 @@
 <div class="container">
   <div class="card-content">
       {% for photo in oneArt.photo_set.all %}
+      <div>
       <img id="img-details" class="responsive-img card-panel" src="{{photo.url}}" />
       {% if user == oneArt.user %}
-      <a href="{% url 'delete_photo' oneArt.id photo.id %}">Delete Photo</a>
+      <a class="btn waves-effect waves-light pink lighten-2" href="{% url 'delete_photo' oneArt.id photo.id %}" value="delete">Delete Photo<i class="material-icons left">delete_forever</i></a>
+      </div>
+      {% else %}
+      </div>
       {% endif %}
       {% empty %}
       <div class="card-content">
@@ -46,7 +50,7 @@
             {% csrf_token %}
             {{ comment_form.as_p }}
             <button class="btn waves-effect waves-light cyan lighten-1" type="submit" value="Add Comment" name="action">Add Comment
-              <i class="material-icons right">add_circle</i>
+              <i class="material-icons left">add_circle</i>
             </button>
           </form> 
       </div>
