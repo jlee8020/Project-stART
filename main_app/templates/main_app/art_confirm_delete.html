@@ -1,16 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Delete Art</h1>
-
-  <h4>Are you sure you want to delete <span class="cyan-text lighten-4">{{ object.name }}</span>?</h4>
-
-  <form action="" method="POST">
-    {% csrf_token %}
-    <button class="btn waves-effect waves-light pink lighten-2" type="submit" value="Yes - Delete!"  name="action">Delete
-      <i class="material-icons left">delete_forever</i>
-    <a class="pink-text text-lighten-4"href="{% url 'art_detail' art.id %}"> - Nevermind, save this art!</a>
-  </form>
+<div class="container">
+  <ul class="collection with-header">
+    <li class="collection-header">
+      <li class="center-align collection-header"><h4>Delete Art</h4></li>
+      <h5>Are you sure you want to delete <span class="cyan-text lighten-4">{{ object.name }}</span>?</h5>
+    </li>
+  </ul>
+      <div class="center-align">
+      <form action="" method="POST">
+        {% csrf_token %}
+        <button class="btn waves-effect waves-light pink lighten-2" type="submit" value="Yes - Delete!"  name="action">Delete
+          <i class="material-icons left">delete_forever</i>
+        <a class="pink-text text-lighten-4"href="{% url 'art_detail' art.id %}"> - Nevermind, save this art!</a>
+      </form>
+    </div>
+</div>
 {% endblock %}
 
 

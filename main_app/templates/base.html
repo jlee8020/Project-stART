@@ -9,70 +9,71 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>stART Base</title>
+    <title>stART</title>
   </head>
   <body>
-    <nav class="nav-wrapper light-blue darken-1">
+    <header>
+    </header>
+        <nav class="nav-wrapper light-blue darken-1">
+         <div class="container">
+          <a class="blue-text text-darken-2" href="{% url 'home' %}">
+            <img class="brand-logo" id="logo" src="/static/main_app/images/logo_large.png" alt="logo" height="60">
+          </a>
+          <!-- mobile menu -->
+          <a href="#" class="sidenav-trigger" data-target="mobile-links">
+            <i class="material-icons">menu</i>
+          </a>
+            <ul class="right hide-on-med-and-down">
+              <li><a class="white-text" href="{% url 'home' %}"><i class="material-icons left">home</i></a></li>
+              <li><a class="white-text" href="{% url 'about' %}"><i class="material-icons left">mood</i>About Us</a></li>
+              <li><a class="white-text" href="{% url 'art_index' %}"><i class="material-icons left">view_list</i>View All Art</a></li>
+              {% if user.is_authenticated %}
+                <li><a class="white-text" href="{% url 'art_create' %}"><i class="material-icons left">add_box</i>Add to Art</a></li>
+                <li><a class="white-text" href="{% url 'profile_detail' %}"><i class="material-icons left">account_circle</i>View Profile</a></li>
+                <li><a class="white-text"href="{% url 'logout' %}">Log Out</a></li>
+              {% else %}
+                <li><a class="white-text" href="{% url 'signup' %}">Sign Up</a></li>
+                <li><a class="white-text" href="{% url 'login' %}">Log In</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </nav>
+      <ul class="sidenav" id="mobile-links">
+        <li><a class="blue-text text-darken-2" href="{% url 'home' %}">Home</a></li>
+        <li><a class="blue-text text-darken-2" href="{% url 'about' %}">About</a></li>
+        <li><a class="blue-text text-darken-2" href="{% url 'art_index' %}">View All Art</a></li>
+        {% if user.is_authenticated %}
+          <li><a class="blue-text text-darken-2" href="{% url 'art_create' %}">Add to Art</a></li>
+          <li><a class="blue-text text-darken-2" href="{% url 'profile_detail' %}">View Profile</a></li>
+          <li><a class="pink-text text-lighten-2"href="{% url 'logout' %}">Log Out</a></li>
+        {% else %}
+          <li><a class="amber-text text-darken-4" href="{% url 'signup' %}">Sign Up</a></li>
+          <li><a class="amber-text text-darken-4" href="{% url 'login' %}">Log In</a></li>
+        {% endif %}
+      </ul>
+    <main class="container">
+      {% block content %}
+      
+      {% endblock %}
+    </main>
+    <footer class="page-footer light-blue darken-1">
       <div class="container">
-        <a class="blue-text text-darken-2" href="{% url 'home' %}">
-          <img class="brand-logo" id="logo" src="/static/main_app/images/logo_large.png" alt="logo" height="60">
-        </a>
-        <a href="#" class="sidenav-trigger" data-target="mobile-links">
-          <i class="material-icons">menu</i>
-        </a>
-          <ul class="right hide-on-med-and-down">
-            <li><a class="blue-text text-darken-2" href="{% url 'art_index' %}">View All Art</a></li>
-            {% if user.is_authenticated %}
-              <li><a class="blue-text text-darken-2" href="{% url 'art_create' %}">Add to Art</a></li>
-              <li><a class="blue-text text-darken-2" href="{% url 'profile_detail' %}">View Profile</a></li>
-              <li><a class="grey-text text-lighten-5"href="{% url 'logout' %}">Log Out</a></li>
-            {% else %}
-              <li><a class="grey-text text-lighten-5" href="{% url 'signup' %}">Sign Up</a></li>
-              <li><a class="grey-text text-lighten-5" href="{% url 'login' %}">Log In</a></li>
-            {% endif %}
-          </ul>
+        <div class="row">
+          <div class=" center-align white-text">All Rights Reserved &copy; 2020 Buckets Of Fun, Inc &nbsp;</div>
         </div>
       </nav>
-    <ul class="sidenav" id="mobile-links">
-      <li><a class="blue-text text-darken-2" href="{% url 'home' %}">Home</a></li>
-      <li><a class="blue-text text-darken-2" href="{% url 'about' %}">About</a></li>
-      <li><a class="blue-text text-darken-2" href="{% url 'art_index' %}">View All Art</a></li>
-      {% if user.is_authenticated %}
-        <li><a class="blue-text text-darken-2" href="{% url 'art_create' %}">Add to Art</a></li>
-        <li><a class="blue-text text-darken-2" href="{% url 'profile_detail' %}">View Profile</a></li>
-        <li><a class="pink-text text-lighten-2"href="{% url 'logout' %}">Log Out</a></li>
-      {% else %}
-        <li><a class="amber-text text-darken-4" href="{% url 'signup' %}">Sign Up</a></li>
-        <li><a class="amber-text text-darken-4" href="{% url 'login' %}">Log In</a></li>
-      {% endif %}
-    </ul>
-  <main class="container">
-    {% block content %}
-    {%block h1%} 
-    {%endblock h1%}
-    {% endblock %}
-  </div>
-  </main>
-    <div class="" id="pre-footer"></div>
-  <footer class="page-footer light-blue darken-1">
-    <div class="container">
-      <div class="row">
-        <a class="right blue-text text-darken-3" href="{% url 'about' %}">About</a>
-        <div class=" center-align light-blue-text text-lighten-2">All Rights Reserved &copy; 2020 Buckets Of Fun, Inc &nbsp;</div>
-      </div>
-    </div>
-  </footer>
+   
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-  <script>
-    $(document).ready(function(){
-      $('.sidenav').sidenav();
-      $('.datepicker').datepicker({
-        autoClose: true
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+      <script>
+        $(document).ready(function(){
+          $('.sidenav').sidenav();
+          $('.datepicker').datepicker({
+            autoClose: true
+            });
+          $('.materialboxed').materialbox();
+          $('.parallax').parallax();
         });
-      $('.materialboxed').materialbox();
-      $('.parallax').parallax();
-    });
-  </script>
+      </script>
   </body>
 </html>
