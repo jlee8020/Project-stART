@@ -4,13 +4,9 @@
 <div class="container">
   <div class="card-content">
       {% for photo in oneArt.photo_set.all %}
-      <div>
       <img id="img-details" class="responsive-img card-panel" src="{{photo.url}}" />
       {% if user == oneArt.user %}
       <a class="btn waves-effect waves-light pink lighten-2" href="{% url 'delete_photo' oneArt.id photo.id %}" value="delete">Delete Photo<i class="material-icons left">delete_forever</i></a>
-      </div>
-      {% else %}
-      </div>
       {% endif %}
       {% empty %}
       <div class="card-content">
