@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>stART Homepage</title>
-<<<<<<< HEAD
 
     <style>
       .home-body {
@@ -45,16 +44,7 @@
         width: 70%;
         margin: 5%;
       }
-
-      /* #home-logo {
-        position: relative;
-        top: 0; left: 0;
-        width: 105%;
-        height: auto;
-      } */
     </style>  
-=======
->>>>>>> 9b068ae49db044b82270e7542eaf4d9453b5a89e
   </head>
   <body class="home-body">
     <nav class="nav-wrapper light-blue darken-1">
@@ -63,11 +53,13 @@
           <i class="material-icons">menu</i>
          </a>
           <ul class="right hide-on-small-and-down">
-              <li><a class="blue-text text-darken-3" href="{% url 'art_index' %}">View All Art</a></li>
+            <li><a class="white-text" href="{% url 'home' %}">Home</a></li>
+            <li><a class="white-text" href="{% url 'about' %}">About</a></li>
+            <li><a class="white-text" href="{% url 'art_index' %}">View All Art</a></li>
             {% if user.is_authenticated %}
               <li><a class="pink-text text-accent-1"href="{% url 'logout' %}">Log Out</a></li>
             {% else %}
-              <li><a class="pink-text text-accent-1" href="{% url 'signup' %}">Sign Up</a></li>
+              <li><a class="pink-text text-accent-1" href="{% url 'signup' %}">Sign Up</a></li>&nbsp &nbsp;;
               <li><a class="pink-text text-accent-1" href="{% url 'login' %}">Log In</a></li>
               {% endif %}
           </ul>
@@ -85,17 +77,6 @@
           <li><a class="pink-text text-accent-1" href="{% url 'login' %}">Log In</a></li>            {% endif %}
         </ul>
       </nav>
-<<<<<<< HEAD
-
-      <!-- <div id="pop-up">
-        <img src="img/ninja.png">
-        <div class="container">
-          <h1>Kung Foo Your Skills</h1>
-          <p>Join the mailing list to be spammed with useless ninja tips</p>
-          <button>Hii Ya</button>
-          <div class="cross">x</div>
-        </div>
-      </div> -->
       <main>
         <div class="row">
         <div class="container col6">
@@ -104,23 +85,13 @@
             <img class="responsive-img" id="home-logo" src="/static/main_app/images/home_logo-sm.png" alt="logo">
             <h5 class="center-align white-text">A platform for sharing photos of murals, graffiti, or any other arts you see on the streets of Austin.</h5>
             <h4 class="center-align white-text">Start sharing today!</h4>
-            <a class="btn waves-effect waves-light pink lighten-1 white-text" href="{% url 'login' %}">Log In</a>
-            <a class="btn waves-effect waves-light pink lighten-1 white-text" href="{% url 'signup' %}">Sign Up</a>
+            <a class="btn waves-effect waves-light cyan lighten-1 white-text" href="{% url 'login' %}">Log In</a>
+            <a class="btn waves-effect waves-light cyan lighten-1 white-text" href="{% url 'signup' %}">Sign Up</a>
           </div>
         </div>
       </div>
     </div>
 
-=======
-    <main class="" id="home-main">
-      <img class="" id="home-logo" src="/static/main_app/images/home_logo.png" alt="logo">
-        <div>
-          <br>
-          <br>
-          <p class="home-text">stART is a platform for sharing photos of murals, graffiti, sculptures, installations, or any other public works of art you can find.</p>
-          <p class="home-text" id="home-tagline">Start sharing today!</p>
-        </div>
->>>>>>> 9b068ae49db044b82270e7542eaf4d9453b5a89e
     </main>
     <footer class="page-footer light-blue darken-1">
       <div class="container">
