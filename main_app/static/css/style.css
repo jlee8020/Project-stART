@@ -1,3 +1,43 @@
+.home-body {
+  display: flex;
+  flex-direction: column;
+  background: url(/static/main_app/images/home_background1.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.home-text {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 20px;
+  display: flex;
+  color: white;
+  position: center;
+  margin: 3%;
+}
+
+#home-tagline {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 25px;
+  display: flex;
+  color: white;
+  position: center;
+}
+
+#home-main {
+  display: block;
+  height: 0;
+  padding-bottom: 56.25%;
+  width: 70%;
+  margin: 5%;
+}
+
+#home-logo {
+  position: relative;
+  top: 0; left: 0;
+  width: 105%;
+  height: auto;
+}
+
 #pre-footer {
   background: url(/static/main_app/images/austin.jpg);
   background-size: cover;
