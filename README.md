@@ -37,11 +37,15 @@ Street Art photo sharing Django app stART is a platform for sharing photos of mu
 ---
 
 # End Product Screenshots 🖥
-
-![https://i.imgur.com/RzlsvDi.png](https://i.imgur.com/RzlsvDi.png)
+![https://i.imgur.com/IKWWMww.png](https://i.imgur.com/IKWWMww.png)
 
 ![https://i.imgur.com/f2ZwYvs.png](https://i.imgur.com/f2ZwYvs.png)
 
+![https://i.imgur.com/RzlsvDi.png](https://i.imgur.com/RzlsvDi.png)
+
+![https://i.imgur.com/W8lo4Dw.png](https://i.imgur.com/W8lo4Dw.png)
+
+![https://i.imgur.com/2aHIkTi.png](https://i.imgur.com/2aHIkTi.png)
 ---
 
 # ERD 🏗
@@ -101,14 +105,17 @@ A minimum viable product will let a logged in user add art, edit or delete added
 
 - [x]  Users can add photos to art
 - [x]  Users can upload a profile picture
+- [x]  Users can edit art
+- [x]  Delete Comments from art
+
+# Stretch Goals 🧊
+- [x]  Extend User model to capture phone information, along with first and last name
+- [x]  Comments show first and last name of the user that added that comment
+- [x]  Mobile Responsiveness
 - [ ]  Add location data to art
 - [ ]  Allow users to search for art by location
 - [ ]  Show location of art on a map
 - [ ]  Allow users to favorite art
-- [x]  Delete Comments from art
-- [x]  Extend User model to capture phone information, along with first and last name
-- [x]  Comments show first and last name of the user that added that comment
-- [x]  Mobile Responsiveness
 - [ ]  Images should be compressed when they are uploaded. The original high quality version could be retained for completeness, but users would typically see the compressed image to improve the typical user experience.
 - [ ]  View an individual user’s contributions on their user page
 - [ ]  Add 2nd factor authentication
